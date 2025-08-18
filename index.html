@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nugget Downloaders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0c1d;
+        }
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 16px;
+            height: 16px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+ body {
+     font-family: 'Inter', sans-serif;
+     background-color: #0d0c1d;
+     background-image: url('https://files.catbox.moe/x1fyh9.jpeg');
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed; 
+}
+ 
+    </style>
+</head>
+<body class="bg-[#0d0c1d] text-gray-200 min-h-screen flex flex-col justify-center items-center p-4">
+
+    <div class="max-w-xl w-full mx-auto bg-[#1b1932] rounded-3xl shadow-2xl overflow-hidden p-8 border border-purple-500/20">
+
+        <div class="text-center mb-8">
+            <h1 class="text-4xl sm:text-5xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                Nugget Downloaders
+            </h1>
+            <p class="text-gray-400 font-light text-md">
+                Unduh video dan mp3 TikTok dengan mudah dan cepat pakai <mark>NUGGET DOWNLOADERS.</mark>
+            </p>
+        </div>
+
+        <form id="downloaderForm" class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <input type="url" id="tiktokUrl" placeholder="Tempel Tautan Tiktoklu di sini..." required class="flex-1 w-full sm:w-auto p-4 bg-[#2a2745] text-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300 placeholder-gray-500 border border-transparent focus:border-pink-500">
+            <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:from-pink-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-all duration-300">
+                Unduh
+            </button>
+        </form>
+
+        <div id="statusMessage" class="text-center mt-6 text-sm text-gray-400 hidden"></div>
+        
+        <div id="resultsContainer" class="mt-8 hidden">
+            <div id="loadingSpinner" class="hidden flex justify-center items-center py-8">
+                <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-pink-500"></div>
+            </div>
+
+            <div id="videoPreview" class="bg-[#2a2745] rounded-xl p-4 mb-6 shadow-inner">
+                <h3 class="text-xl font-semibold mb-4 text-center text-gray-100">Video Anda</h3>
+                <video controls class="w-full rounded-lg" poster="" id="videoPlayer"></video>
+                <div class="text-center mt-4 text-gray-400 text-sm">
+                    <p id="videoTitle" class="truncate font-semibold text-lg text-white"></p>
+                    <p id="videoAuthor" class="font-normal text-sm text-gray-400"></p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button id="downloadNoWatermarkBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-xl transition-colors duration-300">
+                    Unduh Tanpa Watermark
+                </button>
+                <button id="downloadWatermarkBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-xl transition-colors duration-300">
+                    Unduh Dengan Watermark
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                <button id="downloadMusicBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-xl transition-colors duration-300 hidden">
+                    Unduh Musik
+                </button>
+                <button id="downloadCoverBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-xl transition-colors duration-300 hidden">
+                    Unduh Gambar Sampul
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="errorModal" class="modal fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center p-4 z-50 hidden">
+        <div class="bg-[#1b1932] rounded-xl p-8 max-w-sm w-full text-center shadow-xl border border-pink-500/30">
+            <h2 class="text-2xl font-bold mb-4 text-red-400">Gagal Mengunduh</h2>
+            <p id="modalMessage" class="text-gray-300 mb-6"></p>
+            <button id="closeModalBtn" class="w-full px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors duration-300">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const downloaderForm = document.getElementById('downloaderForm');
+        const tiktokUrlInput = document.getElementById('tiktokUrl');
+        const statusMessage = document.getElementById('statusMessage');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoAuthor = document.getElementById('videoAuthor');
+        const downloadNoWatermarkBtn = document.getElementById('downloadNoWatermarkBtn');
+        const downloadWatermarkBtn = document.getElementById('downloadWatermarkBtn');
+        const downloadMusicBtn = document.getElementById('downloadMusicBtn');
+        const downloadCoverBtn = document.getElementById('downloadCoverBtn');
+
+        const errorModal = document.getElementById('errorModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        const API_PRIMARY = 'https://vapis.my.id/api/ttdl?url=';
+        const API_SECONDARY = 'https://api.vreden.web.id/api/tiktok?url=';
+        const API_TERTIARY = 'https://www.tikwm.com/api/?url=';
+
+        async function handleDownload(event) {
+            event.preventDefault();
+
+            const url = tiktokUrlInput.value.trim();
+            if (!url) {
+                showModal('Silakan masukkan URL yang valid.');
+                return;
+            }
+
+            showLoading(true);
+            hideResults();
+            showMessage('Memproses tautan yang anda kirim...', 'text-gray-400');
+
+            let videoData = null;
+            let apiUsed = null;
+
+            try {
+                const primaryData = await fetchApi(API_PRIMARY + encodeURIComponent(url));
+                if (primaryData && primaryData.status === 'success' && primaryData.result) {
+                    videoData = primaryData.result;
+                    apiUsed = 'vapis';
+                }
+            } catch (error) {
+                console.error('Error with primary API:', error);
+            }
+
+            if (!videoData) {
+                showMessage('video anda akan di proses tunggu sebentar...', 'text-yellow-400');
+                try {
+                    const secondaryData = await fetchApi(API_SECONDARY + encodeURIComponent(url));
+                    if (secondaryData && secondaryData.status && secondaryData.result) {
+                        videoData = secondaryData.result;
+                        apiUsed = 'vreden';
+                    }
+                } catch (error) {
+                    console.error('Error with secondary API:', error);
+                }
+            }
+
+            if (!videoData) {
+                showMessage('video anda berhasil di proses', 'text-yellow-400');
+                try {
+                    const tertiaryData = await fetchApi(API_TERTIARY + encodeURIComponent(url));
+                    if (tertiaryData && tertiaryData.code === 0 && tertiaryData.data) {
+                        videoData = tertiaryData.data;
+                        apiUsed = 'tikwm';
+                    }
+                } catch (error) {
+                    console.error('Error with tertiary API:', error);
+                }
+            }
+
+            if (videoData && apiUsed) {
+                displayResults(videoData, apiUsed);
+            } else {
+                showModal('Yah sayang sekali kak, video nya gabisa di unduh😁. Coba lagi nanti atau perbaiki tautan vidio kakaknya ya.');
+                hideLoading();
+                hideResults();
+            }
+        }
+
+        async function fetchApi(apiUrl) {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.statusText}`);
+            }
+            return await response.json();
+        }
+
+        async function startDownload(videoUrl, filename, button) {
+            if (!videoUrl) {
+                showModal('Tautan tidak tersedia.');
+                return;
+            }
+
+            button.disabled = true;
+            button.innerHTML = '<span class="loader"></span> memproses...';
+
+            try {
+                const response = await fetch(videoUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                showModal('Gagal mengunduh file. Silakan coba lagi.');
+                console.error('Download error:', error);
+            } finally {
+                button.disabled = false;
+                const buttonText = {
+                    downloadNoWatermarkBtn: 'Unduh Tanpa Watermark',
+                    downloadWatermarkBtn: 'Unduh Dengan Watermark',
+                    downloadMusicBtn: 'Unduh Musik',
+                    downloadCoverBtn: 'Unduh Gambar Sampul'
+                };
+                button.innerHTML = buttonText[button.id];
+            }
+        }
+
+        function displayResults(videoData, apiUsed) {
+            showLoading(false);
+            hideMessage();
+            resultsContainer.classList.remove('hidden');
+
+            let noWatermarkUrl, watermarkUrl, musicUrl, coverUrl, title, author;
+            if (apiUsed === 'vapis') {
+                noWatermarkUrl = videoData.video?.no_watermark;
+                watermarkUrl = videoData.video?.watermark;
+                musicUrl = videoData.audio;
+                coverUrl = videoData.cover;
+                title = videoData.title;
+                author = videoData.author?.unique_id;
+            } else if (apiUsed === 'vreden') {
+                noWatermarkUrl = videoData.data.find(item => item.type === 'nowatermark')?.url;
+                watermarkUrl = videoData.data.find(item => item.type === 'watermark')?.url;
+                musicUrl = videoData.music_info?.url;
+                coverUrl = videoData.cover;
+                title = videoData.title;
+                author = videoData.author?.fullname;
+            } else if (apiUsed === 'tikwm') {
+                noWatermarkUrl = videoData.play;
+                watermarkUrl = videoData.wmplay;
+                musicUrl = videoData.music;
+                coverUrl = videoData.cover;
+                title = videoData.title;
+                author = videoData.author?.unique_id;
+            }
+
+            if (noWatermarkUrl) {
+                videoPlayer.src = noWatermarkUrl;
+                videoPlayer.poster = coverUrl || '';
+            } else if (watermarkUrl) {
+                videoPlayer.src = watermarkUrl;
+                videoPlayer.poster = coverUrl || '';
+            } else {
+                showModal('Tidak ada tautan unduhan yang tersedia untuk video ini.');
+                hideResults();
+                return;
+            }
+
+            videoTitle.textContent = title || 'Judul Tidak Tersedia';
+            videoAuthor.textContent = author ? `@${author}` : 'Penulis Tidak Tersedia';
+
+            downloadNoWatermarkBtn.classList.toggle('hidden', !noWatermarkUrl);
+            downloadWatermarkBtn.classList.toggle('hidden', !watermarkUrl);
+            downloadMusicBtn.classList.toggle('hidden', !musicUrl);
+            downloadCoverBtn.classList.toggle('hidden', !coverUrl);
+            
+            downloadNoWatermarkBtn.onclick = () => startDownload(noWatermarkUrl, 'tiktok_video.mp4', downloadNoWatermarkBtn);
+            downloadWatermarkBtn.onclick = () => startDownload(watermarkUrl, 'tiktok_video_wm.mp4', downloadWatermarkBtn);
+            downloadMusicBtn.onclick = () => startDownload(musicUrl, 'tiktok_music.mp3', downloadMusicBtn);
+            downloadCoverBtn.onclick = () => startDownload(coverUrl, 'tiktok_cover.jpg', downloadCoverBtn);
+        }
+
+        function showMessage(message, colorClass = 'text-gray-400') {
+            statusMessage.textContent = message;
+            statusMessage.className = `text-center mt-6 text-sm ${colorClass}`;
+            statusMessage.classList.remove('hidden');
+        }
+
+        function hideMessage() {
+            statusMessage.classList.add('hidden');
+        }
+
+        function showLoading(show) {
+            loadingSpinner.classList.toggle('hidden', !show);
+        }
+
+        function hideResults() {
+            resultsContainer.classList.add('hidden');
+            videoPlayer.src = '';
+            videoPlayer.poster = '';
+        }
+
+        function showModal(message) {
+            modalMessage.textContent = message;
+            errorModal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            errorModal.classList.add('hidden');
+        }
+
+        downloaderForm.addEventListener('submit', handleDownload);
+        closeModalBtn.addEventListener('click', closeModal);
+    </script>
+</body>
+</html>
+</html>
