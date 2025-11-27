@@ -1,3 +1,488 @@
-<h1>hai i love you🗿</h1>
-<h2>you love me?</h2>
-<h3>web ini tidak dapat di gunakan lagi karna sudah di ambil alih oleh @ibnuu</h3>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nugget Downloaders - Unduh Video & Foto TikTok Tanpa Watermark</title>
+    
+    <link rel="icon" href="https://files.catbox.moe/53ajme.jpg" type="image/jpeg">
+    <meta property="og:title" content="Nugget Downloaders - Unduh Video & Foto TikTok">
+    <meta property="og:description" content="Unduh video, slide foto, dan MP3 dari TikTok tanpa watermark dengan mudah, cepat, dan gratis.">
+    <meta property="og:image" content="https://files.catbox.moe/53ajme.jpg">
+    <meta property="og:url" content="https://nuggetnihbos.github.io">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nugget Downloaders - Unduh Video & Foto TikTok">
+    <meta name="twitter:description" content="Unduh video, slide foto, dan MP3 dari TikTok tanpa watermark dengan mudah, cepat, dan gratis.">
+    <meta name="twitter:image" content="https://files.catbox.moe/53ajme.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A091A;
+            background-image: url('https://files.catbox.moe/vyw70y.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .glass-effect {
+            background: rgba(17, 15, 41, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .loader-small {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #f87171;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .slider-image {
+            aspect-ratio: 9 / 16;
+            object-fit: contain;
+            width: 100%;
+            max-height: 70vh;
+        }
+
+        .pulse-shadow {
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5), 0 0 30px rgba(139, 92, 246, 0.4);
+            animation: pulse-animation 2.5s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.5), 0 0 30px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(236, 72, 153, 0.8), 0 0 45px rgba(139, 92, 246, 0.6); }
+            100% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.5), 0 0 30px rgba(139, 92, 246, 0.4); }
+        }
+    </style>
+</head>
+<body class="text-gray-200 min-h-screen flex flex-col justify-center items-center p-4 sm:p-6 transition-all duration-300">
+
+    <main class="w-full max-w-3xl mx-auto space-y-8">
+        <section class="glass-effect rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl sm:text-5xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                    Nugget Downloaders
+                </h1>
+                <p class="text-gray-400 font-light text-md max-w-md mx-auto">
+                    Unduh video dan slide foto TikTok tanpa watermark, mudah dan cepat.
+                </p>
+            </div>
+
+            <form id="downloaderForm" class="flex flex-col sm:flex-row items-center gap-4">
+                <div class="relative w-full">
+                    <i class="fas fa-link absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                    <input type="url" id="tiktokUrl" placeholder="Tempel tautan TikTok di sini..." required class="flex-1 w-full p-4 pl-12 bg-[#1f1d3a] text-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300 placeholder-gray-500 border border-transparent focus:border-pink-500">
+                </div>
+                <button type="submit" id="submitBtn" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 focus:ring-offset-gray-900 transition-all duration-300 flex items-center justify-center gap-3 pulse-shadow">
+                    <i class="fas fa-download"></i>
+                    <span>Unduh</span>
+                </button>
+            </form>
+
+            <div id="statusMessage" class="text-center mt-6 text-sm text-gray-400 hidden"></div>
+            
+            <div id="loadingSpinner" class="hidden flex justify-center items-center py-8">
+                <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-pink-500"></div>
+            </div>
+        </section>
+
+        <section id="resultsContainer" class="hidden">
+            <div id="videoResult" class="hidden glass-effect rounded-3xl p-6">
+                <div class="bg-black/20 rounded-xl p-4 mb-6 shadow-inner">
+                    <h3 class="text-xl font-semibold mb-4 text-center text-gray-100">Pratinjau Video</h3>
+                    <video controls class="w-full rounded-lg" poster="" id="videoPlayer"></video>
+                    <div class="text-center mt-4 text-gray-400 text-sm">
+                        <p id="videoTitle" class="truncate font-semibold text-lg text-white"></p>
+                        <p id="videoAuthor" class="font-normal text-sm text-gray-400"></p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <button id="downloadNoWatermarkBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-video"></i> Tanpa Watermark</button>
+                    <button id="downloadWatermarkBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-video-slash"></i> Dengan Watermark</button>
+                    <button id="downloadMusicBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-music"></i> Unduh Musik</button>
+                    <button id="downloadCoverBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-image"></i> Unduh Sampul</button>
+                </div>
+            </div>
+
+            <div id="imageSliderResult" class="hidden glass-effect rounded-3xl p-6">
+                 <div class="bg-black/20 rounded-xl p-4 mb-6 shadow-inner relative">
+                    <h3 class="text-xl font-semibold mb-4 text-center text-gray-100">Pratinjau Slide Foto</h3>
+                    <div id="imageSliderContainer" class="relative w-full flex items-center justify-center bg-black/30 rounded-lg overflow-hidden"></div>
+                    <button id="prevImageBtn" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/60 transition-all duration-300 transform hover:scale-110"><i class="fas fa-chevron-left"></i></button>
+                    <button id="nextImageBtn" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/60 transition-all duration-300 transform hover:scale-110"><i class="fas fa-chevron-right"></i></button>
+                    <div id="imageCounter" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs font-semibold px-2 py-1 rounded-full"></div>
+                </div>
+                <div class="text-center mb-6 text-gray-400 text-sm">
+                    <p id="imageTitle" class="truncate font-semibold text-lg text-white"></p>
+                    <p id="imageAuthor" class="font-normal text-sm text-gray-400"></p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <button id="downloadCurrentImageBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-file-image"></i> Unduh Foto Ini</button>
+                    <button id="downloadAllImagesBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-folder-download"></i> Unduh Semua Foto</button>
+                    <button id="downloadSliderMusicBtn" class="col-span-1 sm:col-span-2 flex items-center justify-center gap-2 w-full px-6 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-music"></i> Unduh Musik Latar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-effect rounded-3xl shadow-2xl p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-center mb-6 text-white">Cara Mengunduh</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="flex flex-col items-center p-4">
+                    <div class="flex items-center justify-center w-16 h-16 mb-4 bg-purple-500/20 rounded-full text-3xl text-purple-400">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2 text-white">1. Salin Tautan</h3>
+                    <p class="text-gray-400 text-sm">Buka TikTok, klik tombol 'Bagikan' pada video/foto, lalu pilih 'Salin Tautan'.</p>
+                </div>
+                <div class="flex flex-col items-center p-4">
+                    <div class="flex items-center justify-center w-16 h-16 mb-4 bg-pink-500/20 rounded-full text-3xl text-pink-400">
+                        <i class="fas fa-paste"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2 text-white">2. Tempel Tautan</h3>
+                    <p class="text-gray-400 text-sm">Kembali ke sini, lalu tempel tautan yang sudah disalin ke dalam kolom di atas.</p>
+                </div>
+                <div class="flex flex-col items-center p-4">
+                    <div class="flex items-center justify-center w-16 h-16 mb-4 bg-emerald-500/20 rounded-full text-3xl text-emerald-400">
+                        <i class="fas fa-cloud-download-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2 text-white">3. Unduh</h3>
+                    <p class="text-gray-400 text-sm">Tekan 'Unduh', tunggu sebentar, lalu pilih format yang Anda inginkan.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full max-w-3xl mx-auto mt-8 text-center text-gray-500 text-sm pb-4">
+        <p>&copy; 2024 Nugget Downloaders.</p>
+    </footer>
+
+    <div id="errorModal" class="modal fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center p-4 z-50 hidden">
+        <div class="bg-[#1b1932] rounded-xl p-8 max-w-sm w-full text-center shadow-xl border border-pink-500/30">
+            <h2 class="text-2xl font-bold mb-4 text-red-400">Gagal Mengunduh</h2>
+            <p id="modalMessage" class="text-gray-300 mb-6"></p>
+            <button id="closeModalBtn" class="w-full px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors duration-300">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const downloaderForm = document.getElementById('downloaderForm');
+        const tiktokUrlInput = document.getElementById('tiktokUrl');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const resultsContainer = document.getElementById('resultsContainer');
+        
+        const videoResult = document.getElementById('videoResult');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoAuthor = document.getElementById('videoAuthor');
+        const downloadNoWatermarkBtn = document.getElementById('downloadNoWatermarkBtn');
+        const downloadWatermarkBtn = document.getElementById('downloadWatermarkBtn');
+        const downloadMusicBtn = document.getElementById('downloadMusicBtn');
+        const downloadCoverBtn = document.getElementById('downloadCoverBtn');
+
+        const imageSliderResult = document.getElementById('imageSliderResult');
+        const imageSliderContainer = document.getElementById('imageSliderContainer');
+        const imageTitle = document.getElementById('imageTitle');
+        const imageAuthor = document.getElementById('imageAuthor');
+        const prevImageBtn = document.getElementById('prevImageBtn');
+        const nextImageBtn = document.getElementById('nextImageBtn');
+        const imageCounter = document.getElementById('imageCounter');
+        const downloadCurrentImageBtn = document.getElementById('downloadCurrentImageBtn');
+        const downloadAllImagesBtn = document.getElementById('downloadAllImagesBtn');
+        const downloadSliderMusicBtn = document.getElementById('downloadSliderMusicBtn');
+        
+        const errorModal = document.getElementById('errorModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        const API_ENDPOINTS = [
+            'https://www.tikwm.com/api/?url=',
+            'https://vapis.my.id/api/ttdl?url=',
+            'https://api.vreden.web.id/api/tiktok?url='
+        ];
+
+        let currentImageIndex = 0;
+        let imagesData = [];
+
+        downloaderForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const url = tiktokUrlInput.value.trim();
+            if (!url) {
+                showModal('Silakan masukkan URL TikTok yang valid.');
+                return;
+            }
+
+            setLoadingState(true);
+            hideAllResults();
+            showMessage('Memproses tautan, mohon tunggu...', 'text-gray-400');
+
+            let responseData = null;
+            for (const apiUrl of API_ENDPOINTS) {
+                try {
+                    showMessage(`Mencoba server #${API_ENDPOINTS.indexOf(apiUrl) + 1}...`, 'text-yellow-400');
+                    const data = await fetchApi(apiUrl + encodeURIComponent(url));
+                    const parsedData = parseApiResponse(data, apiUrl);
+                    if (parsedData) {
+                        responseData = parsedData;
+                        break;
+                    }
+                } catch (error) {
+                    console.error(`Error with API ${apiUrl}:`, error);
+                }
+            }
+
+            setLoadingState(false);
+
+            if (responseData) {
+                hideMessage();
+                displayResults(responseData);
+            } else {
+                showModal('Yah, video/foto tidak dapat diunduh saat ini. Coba lagi nanti atau gunakan tautan lain.');
+                hideMessage();
+            }
+        });
+
+        async function fetchApi(apiUrl) {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.statusText}`);
+            }
+            try {
+                return await response.json();
+            } catch (e) {
+                throw new Error('Respons bukan JSON yang valid.');
+            }
+        }
+
+        function parseApiResponse(data, apiUrl) {
+            if (apiUrl.includes('tikwm.com')) {
+                if (data && data.code === 0 && data.data) {
+                    return {
+                        type: data.data.images ? 'slider' : 'video',
+                        title: data.data.title,
+                        author: data.data.author?.unique_id,
+                        cover: data.data.cover,
+                        noWatermarkUrl: data.data.play,
+                        watermarkUrl: data.data.wmplay,
+                        musicUrl: data.data.music,
+                        images: data.data.images,
+                    };
+                }
+            } else if (apiUrl.includes('vapis.my.id')) {
+                if (data && data.status === 'success' && data.result) {
+                    return {
+                        type: 'video',
+                        title: data.result.title,
+                        author: data.result.author?.unique_id,
+                        cover: data.result.cover,
+                        noWatermarkUrl: data.result.video?.no_watermark,
+                        watermarkUrl: data.result.video?.watermark,
+                        musicUrl: data.result.audio,
+                    };
+                }
+            } else if (apiUrl.includes('vreden.web.id')) {
+                 if (data && data.status && data.result) {
+                    return {
+                        type: 'video',
+                        title: data.result.title,
+                        author: data.result.author?.fullname,
+                        cover: data.result.cover,
+                        noWatermarkUrl: data.result.data.find(item => item.type === 'nowatermark')?.url,
+                        watermarkUrl: data.result.data.find(item => item.type === 'watermark')?.url,
+                        musicUrl: data.result.music_info?.url,
+                    };
+                }
+            }
+            return null;
+        }
+
+        function displayResults(data) {
+            resultsContainer.classList.remove('hidden');
+            if (data.type === 'slider' && data.images && data.images.length > 0) {
+                displayImageSlider(data);
+            } else if (data.type === 'video') {
+                displayVideo(data);
+            } else {
+                showModal('Format konten tidak didukung atau tidak ditemukan.');
+            }
+        }
+
+        function displayVideo(data) {
+            videoResult.classList.remove('hidden');
+            const playableUrl = data.noWatermarkUrl || data.watermarkUrl;
+            if (playableUrl) {
+                videoPlayer.src = playableUrl;
+                videoPlayer.poster = data.cover || '';
+            } else {
+                showModal('Tidak ada tautan video yang bisa diputar.');
+                return;
+            }
+
+            videoTitle.textContent = data.title || 'Judul Tidak Tersedia';
+            videoAuthor.textContent = data.author ? `@${data.author}` : 'Penulis Tidak Tersedia';
+
+            setupDownloadButton(downloadNoWatermarkBtn, data.noWatermarkUrl, 'nugget_downloader_video.mp4');
+            setupDownloadButton(downloadWatermarkBtn, data.watermarkUrl, 'nugget_downloader_video_wm.mp4');
+            setupDownloadButton(downloadMusicBtn, data.musicUrl, 'nugget_downloader_music.mp3');
+            setupDownloadButton(downloadCoverBtn, data.cover, 'nugget_downloader_cover.jpg');
+        }
+
+        function displayImageSlider(data) {
+            imageSliderResult.classList.remove('hidden');
+            imagesData = data.images;
+            currentImageIndex = 0;
+
+            imageTitle.textContent = data.title || 'Judul Tidak Tersedia';
+            imageAuthor.textContent = data.author ? `@${data.author}` : 'Penulis Tidak Tersedia';
+            
+            renderSlider();
+
+            setupDownloadButton(downloadSliderMusicBtn, data.musicUrl, 'nugget_downloader_music.mp3');
+            
+            downloadCurrentImageBtn.onclick = () => {
+                const url = imagesData[currentImageIndex];
+                startDownload(url, `nugget_downloader_image_${currentImageIndex + 1}.jpeg`, downloadCurrentImageBtn);
+            };
+
+            downloadAllImagesBtn.onclick = () => {
+                imagesData.forEach((url, index) => {
+                    setTimeout(() => {
+                         startDownload(url, `nugget_downloader_image_${index + 1}.jpeg`, downloadAllImagesBtn, true);
+                    }, index * 300);
+                });
+            };
+        }
+        
+        function renderSlider() {
+            imageSliderContainer.innerHTML = '';
+            imagesData.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Slide ${index + 1}`;
+                img.className = 'slider-image rounded-lg transition-opacity duration-500 absolute top-0 left-0';
+                img.style.opacity = index === currentImageIndex ? '1' : '0';
+                imageSliderContainer.appendChild(img);
+            });
+            imageSliderContainer.style.paddingTop = '177.77%'; 
+            imageCounter.textContent = `${currentImageIndex + 1} / ${imagesData.length}`;
+            prevImageBtn.disabled = currentImageIndex === 0;
+            nextImageBtn.disabled = currentImageIndex === imagesData.length - 1;
+        }
+
+        prevImageBtn.addEventListener('click', () => {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                renderSlider();
+            }
+        });
+
+        nextImageBtn.addEventListener('click', () => {
+            if (currentImageIndex < imagesData.length - 1) {
+                currentImageIndex++;
+                renderSlider();
+            }
+        });
+
+        function setupDownloadButton(button, url, filename) {
+            if (url) {
+                button.classList.remove('hidden');
+                button.onclick = () => startDownload(url, filename, button);
+            } else {
+                button.classList.add('hidden');
+            }
+        }
+
+        async function startDownload(url, filename, button, isBatch = false) {
+            if (!url) {
+                showModal('Tautan unduhan tidak tersedia.');
+                return;
+            }
+            
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            if (!isBatch) {
+                 button.innerHTML = '<span class="loader-small"></span> Memproses...';
+            }
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+            } catch (error) {
+                console.error('Download error:', error);
+                showModal('Gagal mengunduh file. Coba klik kanan pada tombol dan "Simpan tautan sebagai...".');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+
+        function setLoadingState(isLoading) {
+            loadingSpinner.classList.toggle('hidden', !isLoading);
+            submitBtn.disabled = isLoading;
+            const btnContent = isLoading ? '<span class="loader-small"></span><span>Mencari...</span>' : '<i class="fas fa-download"></i><span>Unduh</span>';
+            submitBtn.innerHTML = btnContent;
+        }
+
+        function showMessage(message, colorClass = 'text-gray-400') {
+            statusMessage.textContent = message;
+            statusMessage.className = `text-center mt-6 text-sm ${colorClass}`;
+            statusMessage.classList.remove('hidden');
+        }
+
+        function hideMessage() {
+            statusMessage.classList.add('hidden');
+        }
+
+        function hideAllResults() {
+            resultsContainer.classList.add('hidden');
+            videoResult.classList.add('hidden');
+            imageSliderResult.classList.add('hidden');
+            videoPlayer.src = '';
+            videoPlayer.poster = '';
+            imageSliderContainer.innerHTML = '';
+        }
+
+        function showModal(message) {
+            modalMessage.textContent = message;
+            errorModal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            errorModal.classList.add('hidden');
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+    </script>
+</body>
+</html>
