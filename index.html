@@ -3,2157 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nugget Troll</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Nugget Downloaders - Unduh Video & Foto TikTok Tanpa Watermark</title>
+    
+    <link rel="icon" href="https://files.catbox.moe/53ajme.jpg" type="image/jpeg">
+    <meta property="og:title" content="Nugget Downloaders - Unduh Video & Foto TikTok">
+    <meta property="og:description" content="Unduh video, slide foto, dan MP3 dari TikTok tanpa watermark dengan mudah, cepat, dan gratis.">
+    <meta property="og:image" content="https://files.catbox.moe/53ajme.jpg">
+    <meta property="og:url" content="https://nuggetnihbos.github.io">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nugget Downloaders - Unduh Video & Foto TikTok">
+    <meta name="twitter:description" content="Unduh video, slide foto, dan MP3 dari TikTok tanpa watermark dengan mudah, cepat, dan gratis.">
+    <meta name="twitter:image" content="https://files.catbox.moe/53ajme.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --primary:#8a2be2;--secondary:#4b0082;--accent:#ff6b6b;--success:#00ff7f;
-            --danger:#ff4757;--dark:#0a0a0a;--darker:#050505;--light:#f8f9fa;
-            --gray:#718096;--neon:#00ffff;--pinterest:#e60023;--info:#17a2b8
-        }
-        body{
-            font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-            background:linear-gradient(135deg,var(--darker)0%,var(--dark)100%);
-            min-height:100vh;color:white;overflow-x:hidden
-        }
-        .login-screen{
-            min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-            align-items:center;padding:20px;text-align:center;
-            background:linear-gradient(135deg,var(--darker)0%,var(--dark)100%);position:relative
-        }
-        .login-screen::before{
-            content:'';position:absolute;top:0;left:0;width:100%;height:100%;
-            background:radial-gradient(circle at 20% 80%,rgba(138,43,226,0.1)0%,transparent 50%),
-            radial-gradient(circle at 80% 20%,rgba(255,107,107,0.1)0%,transparent 50%),
-            radial-gradient(circle at 40% 40%,rgba(0,255,127,0.05)0%,transparent 50%);z-index:0
-        }
-        .login-icon{
-            font-size:80px;margin-bottom:30px;background:rgba(0,0,0,0.7);width:120px;height:120px;
-            border-radius:50%;display:flex;align-items:center;justify-content:center;
-            box-shadow:0 10px 30px rgba(0,0,0,0.5);border:2px solid var(--primary);position:relative;z-index:1
-        }
-        .login-screen h1{
-            font-size:42px;margin-bottom:15px;font-weight:800;
-            text-shadow:0 2px 10px rgba(0,0,0,0.5);position:relative;z-index:1
-        }
-        .glitch{
-            position:relative;color:white;font-size:48px;font-weight:900;text-transform:uppercase;
-            letter-spacing:2px;animation:glitch-skew 4s infinite linear alternate-reverse
-        }
-        .glitch::before,.glitch::after{
-            content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;clip:rect(0,0,0,0)
-        }
-        .glitch::before{
-            left:2px;text-shadow:-2px 0 var(--neon);animation:glitch-anim 5s infinite linear alternate-reverse
-        }
-        .glitch::after{
-            left:-2px;text-shadow:2px 0 var(--accent);animation:glitch-anim2 3s infinite linear alternate-reverse
-        }
-        @keyframes glitch-anim{
-            0%{clip:rect(42px,9999px,44px,0)}5%{clip:rect(12px,9999px,59px,0)}10%{clip:rect(48px,9999px,29px,0)}
-            15%{clip:rect(42px,9999px,73px,0)}20%{clip:rect(63px,9999px,27px,0)}25%{clip:rect(34px,9999px,55px,0)}
-            30%{clip:rect(86px,9999px,73px,0)}35%{clip:rect(20px,9999px,20px,0)}40%{clip:rect(26px,9999px,60px,0)}
-            45%{clip:rect(25px,9999px,66px,0)}50%{clip:rect(57px,9999px,98px,0)}55%{clip:rect(5px,9999px,46px,0)}
-            60%{clip:rect(82px,9999px,31px,0)}65%{clip:rect(54px,9999px,27px,0)}70%{clip:rect(28px,9999px,99px,0)}
-            75%{clip:rect(45px,9999px,69px,0)}80%{clip:rect(23px,9999px,85px,0)}85%{clip:rect(54px,9999px,84px,0)}
-            90%{clip:rect(45px,9999px,47px,0)}95%{clip:rect(37px,9999px,20px,0)}100%{clip:rect(4px,9999px,91px,0)}
-        }
-        @keyframes glitch-anim2{
-            0%{clip:rect(65px,9999px,100px,0)}5%{clip:rect(52px,9999px,74px,0)}10%{clip:rect(79px,9999px,85px,0)}
-            15%{clip:rect(75px,9999px,5px,0)}20%{clip:rect(67px,9999px,61px,0)}25%{clip:rect(14px,9999px,79px,0)}
-            30%{clip:rect(1px,9999px,66px,0)}35%{clip:rect(86px,9999px,30px,0)}40%{clip:rect(23px,9999px,98px,0)}
-            45%{clip:rect(85px,9999px,72px,0)}50%{clip:rect(71px,9999px,75px,0)}55%{clip:rect(2px,9999px,48px,0)}
-            60%{clip:rect(30px,9999px,16px,0)}65%{clip:rect(59px,9999px,50px,0)}70%{clip:rect(41px,9999px,62px,0)}
-            75%{clip:rect(2px,9999px,82px,0)}80%{clip:rect(47px,9999px,73px,0)}85%{clip:rect(3px,9999px,27px,0)}
-            90%{clip:rect(26px,9999px,55px,0)}95%{clip:rect(42px,9999px,97px,0)}100%{clip:rect(38px,9999px,49px,0)}
-        }
-        @keyframes glitch-skew{
-            0%{transform:skew(0deg)}10%{transform:skew(2deg)}20%{transform:skew(0deg)}30%{transform:skew(-1deg)}
-            40%{transform:skew(0deg)}50%{transform:skew(3deg)}60%{transform:skew(0deg)}70%{transform:skew(-2deg)}
-            80%{transform:skew(0deg)}90%{transform:skew(1deg)}100%{transform:skew(0deg)}
-        }
-        .login-screen p{
-            font-size:18px;margin-bottom:40px;opacity:0.9;max-width:500px;position:relative;z-index:1
-        }
-        .login-input{
-            width:100%;max-width:400px;padding:18px 25px;margin-bottom:20px;border:none;border-radius:15px;
-            font-size:16px;background:rgba(0,0,0,0.7);box-shadow:0 5px 20px rgba(0,0,0,0.3);font-weight:500;
-            text-align:center;color:white;border:1px solid var(--primary);position:relative;z-index:1
-        }
-        .login-input:focus{
-            outline:none;background:rgba(0,0,0,0.9);box-shadow:0 8px 25px rgba(138,43,226,0.3);border-color:var(--neon)
-        }
-        .login-btn{
-            width:100%;max-width:400px;padding:18px;background:linear-gradient(135deg,var(--primary)0%,var(--secondary)100%);
-            color:white;border:none;border-radius:15px;font-size:18px;font-weight:700;cursor:pointer;
-            transition:all 0.3s ease;box-shadow:0 8px 25px rgba(138,43,226,0.4);margin-bottom:15px;
-            position:relative;z-index:1;border:1px solid rgba(255,255,255,0.1)
-        }
-        .login-btn:hover{
-            transform:translateY(-3px);box-shadow:0 12px 30px rgba(138,43,226,0.6);
-            background:linear-gradient(135deg,var(--secondary)0%,var(--primary)100%)
-        }
-        .login-error{
-            color:#ffeb3b;margin-top:15px;font-size:16px;display:none;padding:12px 20px;
-            background:rgba(255,235,59,0.1);border-radius:10px;max-width:400px;width:100%;
-            position:relative;z-index:1;border:1px solid rgba(255,235,59,0.3)
-        }
-        .buy-key{
-            margin-top:30px;padding:20px;background:rgba(0,0,0,0.5);border-radius:15px;backdrop-filter:blur(10px);
-            max-width:400px;width:100%;position:relative;z-index:1;border:1px solid rgba(138,43,226,0.3)
-        }
-        .buy-key a{
-            color:var(--neon);text-decoration:none;font-weight:600;font-size:16px;
-            border-bottom:2px solid var(--accent);padding-bottom:2px;transition:all 0.3s ease
-        }
-        .buy-key a:hover{color:var(--accent);border-bottom-color:var(--neon)}
-        .main-app{
-            min-height:100vh;display:none;flex-direction:column;
-            background:linear-gradient(135deg,var(--darker)0%,var(--dark)100%);position:relative
-        }
-        .main-app::before{
-            content:'';position:absolute;top:0;left:0;width:100%;height:100%;
-            background:radial-gradient(circle at 20% 80%,rgba(138,43,226,0.1)0%,transparent 50%),
-            radial-gradient(circle at 80% 20%,rgba(255,107,107,0.1)0%,transparent 50%),
-            radial-gradient(circle at 40% 40%,rgba(0,255,127,0.05)0%,transparent 50%);z-index:0
-        }
-        .header{
-            background:rgba(0,0,0,0.7);padding:25px 30px;backdrop-filter:blur(10px);
-            border-bottom:1px solid rgba(138,43,226,0.3);position:sticky;top:0;z-index:100;
-            box-shadow:0 5px 15px rgba(0,0,0,0.5)
-        }
-        .header-content{
-            display:flex;justify-content:space-between;align-items:center;max-width:1200px;
-            margin:0 auto;position:relative;z-index:1
-        }
-        .header h1{
-            font-size:32px;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,0.5);
-            background:linear-gradient(135deg,var(--primary)0%,var(--neon)100%);
-            -webkit-background-clip:text;-webkit-text-fill-color:transparent
-        }
-        .header p{font-size:16px;opacity:0.9;color:var(--neon)}
-        .hamburger-menu{
-            cursor:pointer;padding:12px;border-radius:12px;background:rgba(138,43,226,0.2);
-            transition:all 0.3s ease;border:1px solid rgba(138,43,226,0.5)
-        }
-        .hamburger-menu:hover{
-            background:rgba(138,43,226,0.4);transform:scale(1.05);box-shadow:0 0 15px rgba(138,43,226,0.5)
-        }
-        .hamburger-icon{
-            width:24px;height:18px;display:flex;flex-direction:column;justify-content:space-between
-        }
-        .hamburger-icon span{
-            display:block;height:3px;width:100%;background:var(--neon);border-radius:3px;transition:all 0.3s ease
-        }
-        .sidebar{
-            position:fixed;top:0;left:-320px;width:300px;height:100vh;background:rgba(0,0,0,0.95);
-            backdrop-filter:blur(20px);transition:left 0.4s cubic-bezier(0.22,0.61,0.36,1);z-index:1000;
-            padding:100px 25px 25px 25px;overflow-y:auto;border-right:1px solid rgba(138,43,226,0.3);
-            box-shadow:5px 0 15px rgba(0,0,0,0.5)
-        }
-        .sidebar.active{left:0}
-        .sidebar-overlay{
-            position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);
-            display:none;z-index:999
-        }
-        .sidebar-overlay.active{display:block}
-        .tool-item{
-            padding:20px;margin:15px 0;background:rgba(0,0,0,0.7);border-radius:15px;cursor:pointer;
-            transition:all 0.3s ease;border:2px solid transparent;display:flex;align-items:center;gap:15px;
-            font-weight:600;font-size:16px;backdrop-filter:blur(10px);color:white;
-            border:1px solid rgba(138,43,226,0.3)
-        }
-        .tool-item:hover{
-            background:rgba(138,43,226,0.2);transform:translateX(8px);border-color:var(--primary);
-            box-shadow:0 5px 15px rgba(138,43,226,0.3)
-        }
-        .tool-item.active{
-            background:linear-gradient(135deg,rgba(138,43,226,0.3)0%,rgba(75,0,130,0.3)100%);
-            border-color:var(--neon);box-shadow:0 5px 20px rgba(138,43,226,0.4)
-        }
-        .tool-item i{font-size:22px;width:30px;text-align:center;color:var(--neon)}
-        .content{
-            flex:1;padding:40px 30px;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:1
-        }
-        .tool-content{display:none}
-        .tool-content.active{display:block;animation:fadeIn 0.4s ease}
-        @keyframes fadeIn{
-            from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}
-        }
-        .form-group{margin-bottom:30px}
-        label{
-            display:block;margin-bottom:12px;font-weight:600;font-size:16px;display:flex;
-            align-items:center;gap:10px;color:var(--neon)
-        }
-        input,textarea{
-            width:100%;padding:18px 20px;border:none;border-radius:15px;font-size:16px;
-            transition:all 0.3s ease;background:rgba(0,0,0,0.7);font-weight:500;
-            box-shadow:0 5px 20px rgba(0,0,0,0.3);color:white;border:1px solid rgba(138,43,226,0.3)
-        }
-        input:focus,textarea:focus{
-            outline:none;background:rgba(0,0,0,0.9);box-shadow:0 8px 25px rgba(138,43,226,0.3);border-color:var(--neon)
-        }
-        textarea{resize:vertical;min-height:120px}
-        .counter{
-            display:flex;align-items:center;gap:20px;margin-bottom:25px
-        }
-        .counter button{
-            width:50px;height:50px;border:none;background:var(--primary);color:white;border-radius:50%;
-            font-size:20px;cursor:pointer;transition:all 0.3s ease;display:flex;justify-content:center;
-            align-items:center;box-shadow:0 5px 15px rgba(138,43,226,0.4);border:1px solid rgba(255,255,255,0.1)
-        }
-        .counter button:hover{
-            background:#7a1fd1;transform:scale(1.1);box-shadow:0 0 15px rgba(138,43,226,0.7)
-        }
-        .counter input{
-            width:100px;text-align:center;font-weight:bold;font-size:20px;background:rgba(0,0,0,0.7);
-            color:white;border:1px solid rgba(138,43,226,0.5)
-        }
-        .btn-spam{
-            width:100%;padding:20px;background:linear-gradient(135deg,var(--primary)0%,var(--secondary)100%);
-            color:white;border:none;border-radius:15px;font-size:18px;font-weight:700;cursor:pointer;
-            transition:all 0.3s ease;box-shadow:0 8px 25px rgba(138,43,226,0.4);display:flex;
-            justify-content:center;align-items:center;gap:12px;margin-top:10px;border:1px solid rgba(255,255,255,0.1)
-        }
-        .btn-spam:hover{
-            transform:translateY(-3px);box-shadow:0 12px 30px rgba(138,43,226,0.6);
-            background:linear-gradient(135deg,var(--secondary)0%,var(--primary)100%)
-        }
-        .btn-spam:disabled{
-            background:#333;cursor:not-allowed;transform:none;box-shadow:none;
-            border-color:rgba(255,255,255,0.05)
-        }
-        .result{
-            margin-top:25px;padding:20px;border-radius:15px;display:none;font-weight:500;
-            line-height:1.6;white-space:pre-line;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);
-            border:1px solid rgba(138,43,226,0.3)
-        }
-        .result.success{
-            background:rgba(0,255,127,0.1);color:#90ffc7;border-color:rgba(0,255,127,0.3)
-        }
-        .result.error{
-            background:rgba(255,71,87,0.1);color:#ffb8c0;border-color:rgba(255,71,87,0.3)
-        }
-        .result.info{
-            background:rgba(23,162,184,0.1);color:#85d8e6;border-color:rgba(23,162,184,0.3)
-        }
-        .progress{
-            margin-top:25px;background:rgba(0,0,0,0.7);border-radius:15px;overflow:hidden;display:none;
-            height:25px;box-shadow:inset 0 2px 5px rgba(0,0,0,0.5);border:1px solid rgba(138,43,226,0.3)
-        }
-        .progress-bar{
-            height:100%;background:linear-gradient(135deg,var(--success)0%,#00cc66 100%);width:0%;
-            transition:width 0.3s ease;color:black;font-size:14px;line-height:25px;text-align:center;font-weight:600
-        }
-        .stats{
-            display:flex;justify-content:space-between;margin-top:25px;font-size:16px;
-            background:rgba(0,0,0,0.7);padding:20px;border-radius:15px;backdrop-filter:blur(10px);
-            border:1px solid rgba(138,43,226,0.3)
-        }
-        .stats span{font-weight:600;color:var(--neon)}
-        .owner{
-            text-align:center;margin-top:40px;padding-top:30px;border-top:1px solid rgba(138,43,226,0.3);
-            color:rgba(255,255,255,0.8);font-size:16px
-        }
-        .owner a{
-            color:var(--neon);text-decoration:none;font-weight:600;border-bottom:2px solid var(--accent);
-            padding-bottom:2px;transition:all 0.3s ease
-        }
-        .owner a:hover{color:var(--accent);border-bottom-color:var(--neon)}
-        .loading{display:none;text-align:center;margin:25px 0}
-        .spinner{
-            border:4px solid rgba(138,43,226,0.3);border-top:4px solid var(--neon);border-radius:50%;
-            width:40px;height:40px;animation:spin 1s linear infinite;margin:0 auto 20px
-        }
-        @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-        .token-controls{
-            display:flex;gap:12px;margin-top:15px;flex-wrap:wrap
-        }
-        .btn-token{
-            padding:12px 18px;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;
-            transition:all 0.3s ease;display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.7);
-            color:white;border:1px solid rgba(138,43,226,0.3)
-        }
-        .btn-save{
-            background:linear-gradient(135deg,var(--success)0%,#00cc66 100%);color:black
-        }
-        .btn-reset{
-            background:linear-gradient(135deg,var(--accent)0%,#ff4757 100%);color:white
-        }
-        .btn-info{
-            background:linear-gradient(135deg,var(--info)0%,#138496 100%);color:white
-        }
-        .btn-token:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,0.5)}
-        .token-status{
-            font-size:14px;margin-top:10px;padding:12px;border-radius:10px;text-align:center;display:none;
-            font-weight:500;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);border:1px solid rgba(138,43,226,0.3)
-        }
-        .token-status.valid{
-            background:rgba(0,255,127,0.1);color:#90ffc7;border-color:rgba(0,255,127,0.3);display:block
-        }
-        .token-status.invalid{
-            background:rgba(255,71,87,0.1);color:#ffb8c0;border-color:rgba(255,71,87,0.3);display:block
-        }
-        .video-preview,.pinterest-preview{margin-top:25px;text-align:center}
-        .video-preview video,.pinterest-preview img{
-            max-width:100%;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.5);
-            border:1px solid rgba(138,43,226,0.3)
-        }
-        .download-btn{
-            width:100%;padding:18px;background:linear-gradient(135deg,var(--primary)0%,var(--secondary)100%);
-            color:white;border:none;border-radius:15px;font-size:16px;font-weight:600;cursor:pointer;
-            transition:all 0.3s ease;margin-top:20px;display:flex;justify-content:center;align-items:center;
-            gap:10px;box-shadow:0 8px 25px rgba(138,43,226,0.4);border:1px solid rgba(255,255,255,0.1)
-        }
-        .download-btn:hover{
-            transform:translateY(-3px);box-shadow:0 12px 30px rgba(138,43,226,0.6);
-            background:linear-gradient(135deg,var(--secondary)0%,var(--primary)100%)
-        }
-        .floating-notification{
-            position:fixed;top:30px;right:30px;padding:18px 25px;border-radius:15px;color:white;
-            font-weight:600;z-index:1001;box-shadow:0 8px 25px rgba(0,0,0,0.5);transform:translateX(150%);
-            transition:transform 0.4s ease;backdrop-filter:blur(10px);border:1px solid rgba(138,43,226,0.3)
-        }
-        .floating-notification.show{transform:translateX(0)}
-        .floating-notification.success{background:rgba(0,255,127,0.9);color:black}
-        .floating-notification.error{background:rgba(255,71,87,0.9);color:white}
-        .floating-notification.info{background:rgba(23,162,184,0.9);color:white}
-        .pinterest-grid{
-            display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:15px;margin-top:20px
-        }
-        .pinterest-item{
-            background:rgba(0,0,0,0.7);border-radius:15px;overflow:hidden;border:1px solid rgba(138,43,226,0.3);
-            transition:all 0.3s ease
-        }
-        .pinterest-item:hover{
-            transform:translateY(-5px);box-shadow:0 10px 25px rgba(138,43,226,0.4)
-        }
-        .pinterest-item img{width:100%;height:150px;object-fit:cover}
-        .pinterest-info{padding:15px}
-        .pinterest-info h4{margin-bottom:8px;font-size:14px;color:var(--neon)}
-        .pinterest-info p{font-size:12px;color:#ccc;margin-bottom:10px;line-height:1.4}
-        .pinterest-actions{display:flex;justify-content:space-between;gap:8px}
-        .pinterest-btn{
-            flex:1;padding:8px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;
-            transition:all 0.3s ease
-        }
-        .pinterest-send{background:var(--pinterest);color:white}
-        .pinterest-download{background:var(--primary);color:white}
-        .pinterest-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,0.3)}
-        @media (max-width:768px){
-            .header{padding:20px}.header h1{font-size:24px}.content{padding:20px}
-            .counter{gap:15px}.counter button{width:45px;height:45px}
-            .stats{flex-direction:column;gap:10px}.glitch{font-size:36px}
-            .pinterest-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-        }
-        .matrix-bg{
-            position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.03
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A091A;
+            background-image: url('https://files.catbox.moe/vyw70y.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .glass-effect {
+            background: rgba(17, 15, 41, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .loader-small {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #f87171;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .slider-image {
+            aspect-ratio: 9 / 16;
+            object-fit: contain;
+            width: 100%;
+            max-height: 70vh;
+        }
+
+        .pulse-shadow {
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5), 0 0 30px rgba(139, 92, 246, 0.4);
+            animation: pulse-animation 2.5s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.5), 0 0 30px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(236, 72, 153, 0.8), 0 0 45px rgba(139, 92, 246, 0.6); }
+            100% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.5), 0 0 30px rgba(139, 92, 246, 0.4); }
         }
     </style>
 </head>
-<body>
-    <div class="matrix-bg" id="matrixBg"></div>
-    <div class="floating-notification" id="floatingNotification"></div>
+<body class="text-gray-200 min-h-screen flex flex-col justify-center items-center p-4 sm:p-6 transition-all duration-300">
 
-    <div class="login-screen" id="loginContainer">
-        <div class="login-icon">
-            <i class="fas fa-lock"></i>
-        </div>
-        <h1 class="glitch" data-text="NUGGET TROLL">NUGGET TROLL</h1>
-        <p>welcome and enjoy</p>
-        <input type="password" class="login-input" id="accessKey" placeholder="Masukkan key disini">
-        <button class="login-btn" onclick="checkAccessKey()">
-            <i class="fas fa-key"></i> MASUK KE APLIKASI
-        </button>
-        
-        <div class="login-error" id="loginError">
-            <i class="fas fa-exclamation-circle"></i> Kunci akses salah! crack dong puh😔
-        </div>
-        
-        <div class="buy-key">
-            Beli kunci akses? <a href="https://t.me/nuggettxvec" target="_blank">PV @nuggettxvec</a>
-        </div>
-    </div>
-
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    
-    <div class="sidebar" id="sidebar">
-        <div class="tool-item active" onclick="switchTool('spammer')">
-            <i class="fas fa-robot"></i> Telegram Spammer
-        </div>
-        <div class="tool-item" onclick="switchTool('tiktok')">
-            <i class="fas fa-video"></i> TikTok Downloader
-        </div>
-          <div class="tool-item" onclick="switchTool('shorturl')">
-     <i class="fas fa-link"></i> URL Shortener
- </div>
-        <div class="tool-item" onclick="switchTool('animeschedule')">
-    <i class="fas fa-tv"></i> Anime Schedule
-</div>
-         <div class="tool-item" onclick="switchTool('nsfwcheck')">
-    <i class="fas fa-shield-alt"></i> NSFW Checker
-</div>
-        <div class="tool-item" onclick="switchTool('pinterest')">
-            <i class="fab fa-pinterest"></i> Pinterest Downloader
-        </div>
-         <div class="tool-item" onclick="switchTool('trackip')">
-    <i class="fas fa-map-marker-alt"></i> IP Location Tracker
-</div>
-   <div class="tool-item" onclick="switchTool('ytmp3')">
-    <i class="fab fa-youtube"></i> YouTube MP3 Downloader
- </div> 
-            <div class="tool-item" onclick="switchTool('gdrive')">
-             <i class="fab fa-google-drive"></i> GDrive Downloader
-              </div>
-               <div class="tool-item" onclick="switchTool('aichat')">
-    <i class="fas fa-brain"></i> AI Chat
-</div>
-        <div class="tool-item" onclick="switchTool('instagram')">
-            <i class="fab fa-instagram"></i> Instagram Downloader
-        </div>
-    </div>
-    <div class="main-app" id="mainContainer">
-        <div class="header">
-            <div class="header-content">
-                <div>
-                    <h1>Nugget Troll</h1>
-                    <p>Powered by : ibnuu1st</p>
-                </div>
-                <div class="hamburger-menu" onclick="toggleSidebar()">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
+    <main class="w-full max-w-3xl mx-auto space-y-8">
+        <section class="glass-effect rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl sm:text-5xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                    Nugget Downloaders
+                </h1>
+                <p class="text-gray-400 font-light text-md max-w-md mx-auto">
+                    Unduh video dan slide foto TikTok tanpa watermark, mudah dan cepat.
+                </p>
             </div>
-        </div>
 
-        <div class="content">
-          <div class="tool-content" id="gdriveTool">
-    <div class="form-group">
-        <label for="botTokenGDrive"><i class="fas fa-robot"></i> Bot Token:</label>
-        <input type="text" id="botTokenGDrive" placeholder="Masukkan bot token Anda..." value="Your_token_bot">
-        <div class="token-status" id="tokenStatusGDrive"></div>
-        <div class="token-controls">
-            <button class="btn-token btn-save" onclick="saveTokenGDrive()">
-                <i class="fas fa-save"></i> Simpan Token
-            </button>
-            <button class="btn-token btn-reset" onclick="resetTokenGDrive()">
-                <i class="fas fa-redo"></i> Reset
-            </button>
-            <button class="btn-token" onclick="testTokenGDrive()" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white">
-                <i class="fas fa-vial"></i> Test Token
-            </button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="targetIdGDrive"><i class="fas fa-user"></i> Target ID/Username:</label>
-        <input type="text" id="targetIdGDrive" placeholder="123456789 atau -123456789">
-    </div>
-
-    <div class="form-group">
-        <label for="gdriveUrl"><i class="fab fa-google-drive"></i> Google Drive URL:</label>
-        <input type="text" id="gdriveUrl" placeholder="https://drive.google.com/file/d/XXXXX/view" required>
-        <small style="color:#ccc; margin-top:5px; display:block;">Contoh: https://drive.google.com/file/d/17mxxaGb9a-59seWu0BTY0Se3uM-aW2ZZ/view</small>
-    </div>
-
-    <div class="loading" id="loadingGDrive">
-        <div class="spinner"></div>
-        <p>Mengambil file dari Google Drive...</p>
-    </div>
-
-    <button class="btn-spam" onclick="getGDriveFile()" id="gdriveBtn">
-        <i class="fas fa-download"></i> DOWNLOAD FILE
-    </button>
-
-    <div id="gdriveResult" style="margin-top:25px;"></div>
-</div>
-        <div class="tool-content" id="nsfwcheckTool">
-    <div class="form-group">
-        <label for="botTokenNSFW"><i class="fas fa-robot"></i> Bot Token:</label>
-        <input type="text" id="botTokenNSFW" placeholder="Masukkan bot token Anda..." value="Your_token_bot">
-        <div class="token-status" id="tokenStatusNSFW"></div>
-        <div class="token-controls">
-            <button class="btn-token btn-save" onclick="saveTokenNSFW()">
-                <i class="fas fa-save"></i> Simpan Token
-            </button>
-            <button class="btn-token btn-reset" onclick="resetTokenNSFW()">
-                <i class="fas fa-redo"></i> Reset
-            </button>
-            <button class="btn-token" onclick="testTokenNSFW()" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white">
-                <i class="fas fa-vial"></i> Test Token
-            </button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="targetIdNSFW"><i class="fas fa-user"></i> Target ID/Username:</label>
-        <input type="text" id="targetIdNSFW" placeholder="123456789 atau -123456789">
-    </div>
-
-    <div class="form-group">
-        <label for="imageUrlNSFW"><i class="fas fa-image"></i> URL Gambar:</label>
-        <input type="text" id="imageUrlNSFW" placeholder="https://example.com/image.jpg" required>
-        <small style="color:#ccc; margin-top:5px; display:block;">Masukkan link gambar untuk dicek konten NSFW.</small>
-    </div>
-
-    <div class="loading" id="loadingNSFW">
-        <div class="spinner"></div>
-        <p>Sedang menganalisis gambar...</p>
-    </div>
-
-    <button class="btn-spam" onclick="checkNSFW()" id="nsfwBtn">
-        <i class="fas fa-search"></i> CEK NSFW
-    </button>
-
-    <div id="nsfwResult" style="margin-top:25px;"></div>
-</div>
-        <div class="tool-content" id="aichatTool">
-    <div class="form-group">
-        <label for="aiPrompt"><i class="fas fa-comment"></i> Tanya ke AI:</label>
-        <textarea id="aiPrompt" placeholder="Tanya apa saja ke AI..." rows="4" required></textarea>
-    </div>
-
-    <div class="loading" id="loadingAI">
-        <div class="spinner"></div>
-        <p>AI sedang berpikir...</p>
-    </div>
-
-    <button class="btn-spam" onclick="askAI()" id="aiBtn">
-        <i class="fas fa-paper-plane"></i> TANYAKAN KE AI
-    </button>
-
-    <div id="aiChatContainer" style="margin-top:25px;"></div>
-</div>
-        <div class="tool-content" id="shorturlTool">
-       <div class="form-group">
-        <label for="shortUrlInput"><i class="fas fa-globe"></i> URL Panjang:</label>
-        <input type="text" id="shortUrlInput" placeholder="https://nuggetsukadia.com/jembut-lebat" required>
-        <small style="color:#ccc; margin-top:5px; display:block;">Masukkan URL lengkap yang ingin dipendekin kek umur lu.</small>
-        </div>
-
-    <div class="loading" id="loadingShortUrl">
-        <div class="spinner"></div>
-        <p>Tunggu bentar ya ganteng ku🤭..</p>
-    </div>
-
-    <button class="btn-spam" onclick="shortenURL()" id="shortUrlBtn">
-        <i class="fas fa-compress-alt"></i> BUAT BANG
-    </button>
-
-    <div class="result-preview" id="shortUrlResult" style="margin-top:25px;"></div>
-</div>
-            <div class="tool-content" id="animescheduleTool">
-    <div class="form-group">
-        <h3 style="color:var(--neon); margin-bottom:20px;">
-            <i class="fas fa-calendar-alt"></i> Jadwal Anime Mingguan
-        </h3>
-        <p style="color:#ccc; margin-bottom:20px;">Lihat jadwal tayang anime berdasarkan hari (data dari otakudesu.best)</p>
-    </div>
-
-    <div class="loading" id="loadingAnimeSchedule">
-        <div class="spinner"></div>
-        <p>Mengambil jadwal anime...</p>
-    </div>
-
-    <button class="btn-spam" onclick="loadAnimeSchedule()" id="animeScheduleBtn">
-        <i class="fas fa-sync-alt"></i> MUAT JADWAL ANIME
-    </button>
-
-    <div id="animeScheduleContainer" style="margin-top:25px;"></div>
-</div>
-            <div class="tool-content active" id="spammerTool">
-                <div class="form-group">
-                    <label for="botToken"><i class="fas fa-robot"></i> Bot Token:</label>
-                    <input type="text" id="botToken" placeholder="Masukkan bot token Anda..." value="Your_token_bot">
-                    <div class="token-status" id="tokenStatus"></div>
-                    <div class="token-controls">
-                        <button class="btn-token btn-save" onclick="saveToken()">
-                            <i class="fas fa-save"></i> Simpan Token
-                        </button>
-                        <button class="btn-token btn-reset" onclick="resetToken()">
-                            <i class="fas fa-redo"></i> Reset
-                        </button>
-                        <button class="btn-token" onclick="testToken()" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white">
-                            <i class="fas fa-vial"></i> Test Token
-                        </button>
-                    </div>
+            <form id="downloaderForm" class="flex flex-col sm:flex-row items-center gap-4">
+                <div class="relative w-full">
+                    <i class="fas fa-link absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                    <input type="url" id="tiktokUrl" placeholder="Tempel tautan TikTok di sini..." required class="flex-1 w-full p-4 pl-12 bg-[#1f1d3a] text-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all duration-300 placeholder-gray-500 border border-transparent focus:border-pink-500">
                 </div>
-
-                <div class="form-group">
-                    <label for="targetId"><i class="fas fa-user"></i> Target ID/Username:</label>
-                    <input type="text" id="targetId" placeholder="123456789 atau -123456789" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="message"><i class="fas fa-comment"></i> Pesan:</label>
-                    <textarea id="message" placeholder="Ketik pesan yang mau di-spam..." required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-hashtag"></i> Jumlah Spam:</label>
-                    <div class="counter">
-                        <button onclick="changeCount(-1)">-</button>
-                        <input type="number" id="count" value="5" min="1" max="50">
-                        <button onclick="changeCount(1)">+</button>
-                    </div>
-                </div>
-
-                <div class="loading" id="loading">
-                    <div class="spinner"></div>
-                    <p>Sedang mengirim text dari bro untuk target...</p>
-                </div>
-
-                <button class="btn-spam" onclick="startSpam()" id="spamBtn">
-                    <i class="fas fa-paper-plane"></i> START SPAM 
+                <button type="submit" id="submitBtn" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 focus:ring-offset-gray-900 transition-all duration-300 flex items-center justify-center gap-3 pulse-shadow">
+                    <i class="fas fa-download"></i>
+                    <span>Unduh</span>
                 </button>
+            </form>
 
-                <div class="progress" id="progress">
-                    <div class="progress-bar" id="progressBar">0%</div>
-                </div>
-
-                <div class="stats" id="stats">
-                    <span>Berhasil: <span id="successCount">0</span></span>
-                    <span>Gagal: <span id="errorCount">0</span></span>
-                    <span>Total: <span id="totalCount">0</span></span>
-                </div>
+            <div id="statusMessage" class="text-center mt-6 text-sm text-gray-400 hidden"></div>
+            
+            <div id="loadingSpinner" class="hidden flex justify-center items-center py-8">
+                <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-pink-500"></div>
             </div>
-                <div class="tool-content" id="trackipTool">
-    <div class="form-group">
-        <label for="ipAddress"><i class="fas fa-globe"></i> IP Address:</label>
-        <input type="text" id="ipAddress" placeholder="Contoh: 112.90.150.204" required>
-    </div>
+        </section>
 
-    <div class="loading" id="loadingTrackIP">
-        <div class="spinner"></div>
-        <p>Sedang mencari lokasi IP...</p>
-    </div>
-
-    <button class="btn-spam" onclick="trackIPLocation()" id="trackIPBtn">
-        <i class="fas fa-search-location"></i> LACAK IP SEKARANG
-    </button>
-
-    <div class="result-preview" id="trackIPPreview" style="margin-top:25px;"></div>
-</div>
-            <div class="tool-content" id="tiktokTool">
-                <div class="form-group">
-                    <label for="botTokenTiktok"><i class="fas fa-robot"></i> Bot Token:</label>
-                    <input type="text" id="botTokenTiktok" placeholder="Masukkan bot token Anda..." value="Your_token_bot">
-                    <div class="token-status" id="tokenStatusTiktok"></div>
-                    <div class="token-controls">
-                        <button class="btn-token btn-save" onclick="saveTokenTiktok()">
-                            <i class="fas fa-save"></i> Simpan Token
-                        </button>
-                        <button class="btn-token btn-reset" onclick="resetTokenTiktok()">
-                            <i class="fas fa-redo"></i> Reset
-                        </button>
-                        <button class="btn-token" onclick="testTokenTiktok()" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white">
-                            <i class="fas fa-vial"></i> Test Token
-                        </button>
+        <section id="resultsContainer" class="hidden">
+            <div id="videoResult" class="hidden glass-effect rounded-3xl p-6">
+                <div class="bg-black/20 rounded-xl p-4 mb-6 shadow-inner">
+                    <h3 class="text-xl font-semibold mb-4 text-center text-gray-100">Pratinjau Video</h3>
+                    <video controls class="w-full rounded-lg" poster="" id="videoPlayer"></video>
+                    <div class="text-center mt-4 text-gray-400 text-sm">
+                        <p id="videoTitle" class="truncate font-semibold text-lg text-white"></p>
+                        <p id="videoAuthor" class="font-normal text-sm text-gray-400"></p>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="targetIdTiktok"><i class="fas fa-user"></i> Target ID/Username:</label>
-                    <input type="text" id="targetIdTiktok" placeholder="123456789 atau -123456789" required>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <button id="downloadNoWatermarkBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-video"></i> Tanpa Watermark</button>
+                    <button id="downloadWatermarkBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-gray-700 hover:bg-gray-800 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-video-slash"></i> Dengan Watermark</button>
+                    <button id="downloadMusicBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-music"></i> Unduh Musik</button>
+                    <button id="downloadCoverBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-image"></i> Unduh Sampul</button>
                 </div>
-
-                <div class="form-group">
-                    <label for="tiktokUrl"><i class="fas fa-globe"></i> TikTok URL:</label>
-                    <input type="text" id="tiktokUrl" placeholder="https://vm.tiktok.com/xxx atau https://www.tiktok.com/xxx" required>
-                </div>
-
-                <div class="loading" id="loadingTiktok">
-                    <div class="spinner"></div>
-                    <p>Sedang mendownload video...</p>
-                </div>
-
-                <button class="btn-spam" onclick="downloadTiktok()" id="tiktokBtn">
-                    <i class="fas fa-download"></i> DOWNLOAD & KIRIM VIDEO
-                </button>
-
-                <div class="video-preview" id="videoPreview"></div>
             </div>
 
-            <div class="tool-content" id="pinterestTool">
-                <div class="form-group">
-                    <label for="botTokenPinterest"><i class="fas fa-robot"></i> Bot Token:</label>
-                    <input type="text" id="botTokenPinterest" placeholder="Masukkan bot token Anda..." value="Your_token_bot">
-                    <div class="token-status" id="tokenStatusPinterest"></div>
-                    <div class="token-controls">
-                        <button class="btn-token btn-save" onclick="saveTokenPinterest()">
-                            <i class="fas fa-save"></i> Simpan Token
-                        </button>
-                        <button class="btn-token btn-reset" onclick="resetTokenPinterest()">
-                            <i class="fas fa-redo"></i> Reset
-                        </button>
-                        <button class="btn-token" onclick="testTokenPinterest()" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white">
-                            <i class="fas fa-vial"></i> Test Token
-                        </button>
+            <div id="imageSliderResult" class="hidden glass-effect rounded-3xl p-6">
+                 <div class="bg-black/20 rounded-xl p-4 mb-6 shadow-inner relative">
+                    <h3 class="text-xl font-semibold mb-4 text-center text-gray-100">Pratinjau Slide Foto</h3>
+                    <div id="imageSliderContainer" class="relative w-full flex items-center justify-center bg-black/30 rounded-lg overflow-hidden"></div>
+                    <button id="prevImageBtn" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/60 transition-all duration-300 transform hover:scale-110"><i class="fas fa-chevron-left"></i></button>
+                    <button id="nextImageBtn" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/60 transition-all duration-300 transform hover:scale-110"><i class="fas fa-chevron-right"></i></button>
+                    <div id="imageCounter" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs font-semibold px-2 py-1 rounded-full"></div>
+                </div>
+                <div class="text-center mb-6 text-gray-400 text-sm">
+                    <p id="imageTitle" class="truncate font-semibold text-lg text-white"></p>
+                    <p id="imageAuthor" class="font-normal text-sm text-gray-400"></p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <button id="downloadCurrentImageBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-file-image"></i> Unduh Foto Ini</button>
+                    <button id="downloadAllImagesBtn" class="flex items-center justify-center gap-2 w-full px-6 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-folder-download"></i> Unduh Semua Foto</button>
+                    <button id="downloadSliderMusicBtn" class="col-span-1 sm:col-span-2 flex items-center justify-center gap-2 w-full px-6 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"><i class="fas fa-music"></i> Unduh Musik Latar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-effect rounded-3xl shadow-2xl p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-center mb-6 text-white">Cara Mengunduh</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="flex flex-col items-center p-4">
+                    <div class="flex items-center justify-center w-16 h-16 mb-4 bg-purple-500/20 rounded-full text-3xl text-purple-400">
+                        <i class="fas fa-link"></i>
                     </div>
+                    <h3 class="font-semibold text-lg mb-2 text-white">1. Salin Tautan</h3>
+                    <p class="text-gray-400 text-sm">Buka TikTok, klik tombol 'Bagikan' pada video/foto, lalu pilih 'Salin Tautan'.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="targetIdPinterest"><i class="fas fa-user"></i> Target ID/Username:</label>
-                    <input type="text" id="targetIdPinterest" placeholder="123456789 atau -123456789" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="pinterestQuery"><i class="fab fa-pinterest"></i> Kata Kunci Pinterest:</label>
-                    <input type="text" id="pinterestQuery" placeholder="Masukkan kata kunci pencarian..." required>
-                </div>
-
-                <div class="form-group">
-                    <label><i class="fas fa-hashtag"></i> Jumlah Gambar:</label>
-                    <div class="counter">
-                        <button onclick="changePinterestCount(-1)">-</button>
-                        <input type="number" id="pinterestCount" value="5" min="1" max="20">
-                        <button onclick="changePinterestCount(1)">+</button>
+                <div class="flex flex-col items-center p-4">
+                    <div class="flex items-center justify-center w-16 h-16 mb-4 bg-pink-500/20 rounded-full text-3xl text-pink-400">
+                        <i class="fas fa-paste"></i>
                     </div>
+                    <h3 class="font-semibold text-lg mb-2 text-white">2. Tempel Tautan</h3>
+                    <p class="text-gray-400 text-sm">Kembali ke sini, lalu tempel tautan yang sudah disalin ke dalam kolom di atas.</p>
                 </div>
-
-                <div class="loading" id="loadingPinterest">
-                    <div class="spinner"></div>
-                    <p>Sedang mencari gambar...</p>
-                </div>
-
-                <button class="btn-spam" onclick="searchPinterest()" id="pinterestBtn">
-                    <i class="fab fa-pinterest"></i> CARI & DOWNLOAD GAMBAR
-                </button>
-
-                <div class="pinterest-preview" id="pinterestPreview"></div>
-                <div class="pinterest-grid" id="pinterestGrid"></div>
-            </div>
-                 <div class="tool-content" id="ytmp3Tool">
-    <div class="form-group">
-        <label for="youtubeUrl"><i class="fab fa-youtube"></i> YouTube URL:</label>
-        <input type="text" id="youtubeUrl" placeholder="https://youtube.com/watch?v=xxxxx" required>
-    </div>
-
-    <div class="loading" id="loadingYtmp3">
-        <div class="spinner"></div>
-        <p>Sedang memproses audio...</p>
-    </div>
-
-    <button class="btn-spam" onclick="downloadYtmp3()" id="ytmp3Btn">
-        <i class="fas fa-download"></i> DOWNLOAD MP3
-    </button>
-
-    <div class="result-preview" id="ytmp3Preview" style="margin-top:25px;"></div>
-</div>
-            <div class="tool-content" id="instagramTool">
-                <div class="form-group">
-                    <label for="botTokenInstagram"><i class="fas fa-robot"></i> Bot Token:</label>
-                    <input type="text" id="botTokenInstagram" placeholder="Masukkan bot token Anda..." value="Your_token_bot">
-                    <div class="token-status" id="tokenStatusInstagram"></div>
-                    <div class="token-controls">
-                        <button class="btn-token btn-save" onclick="saveTokenInstagram()">
-                            <i class="fas fa-save"></i> Simpan Token
-                        </button>
-                        <button class="btn-token btn-reset" onclick="resetTokenInstagram()">
-                            <i class="fas fa-redo"></i> Reset
-                        </button>
-                        <button class="btn-token" onclick="testTokenInstagram()" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white">
-                            <i class="fas fa-vial"></i> Test Token
-                        </button>
+                <div class="flex flex-col items-center p-4">
+                    <div class="flex items-center justify-center w-16 h-16 mb-4 bg-emerald-500/20 rounded-full text-3xl text-emerald-400">
+                        <i class="fas fa-cloud-download-alt"></i>
                     </div>
+                    <h3 class="font-semibold text-lg mb-2 text-white">3. Unduh</h3>
+                    <p class="text-gray-400 text-sm">Tekan 'Unduh', tunggu sebentar, lalu pilih format yang Anda inginkan.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="targetIdInstagram"><i class="fas fa-user"></i> Target ID/Username:</label>
-                    <input type="text" id="targetIdInstagram" placeholder="123456789 atau -123456789" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="instagramUrl"><i class="fab fa-instagram"></i> Instagram URL:</label>
-                    <input type="text" id="instagramUrl" placeholder="https://www.instagram.com/p/xxx atau https://www.instagram.com/reel/xxx" required>
-                </div>
-
-                <div class="loading" id="loadingInstagram">
-                    <div class="spinner"></div>
-                    <p>Sedang memproses konten Instagram...</p>
-                </div>
-
-                <button class="btn-spam" onclick="downloadInstagram()" id="instagramBtn">
-                    <i class="fas fa-download"></i> DOWNLOAD & KIRIM KE TELEGRAM
-                </button>
-
-                <div class="result-preview" id="instagramPreview" style="margin-top:25px;"></div>
             </div>
+        </section>
+    </main>
 
-            <div class="result" id="result"></div>
+    <footer class="w-full max-w-3xl mx-auto mt-8 text-center text-gray-500 text-sm pb-4">
+        <p>&copy; 2024 Nugget Downloaders.</p>
+    </footer>
 
-            <div class="owner">
-                👑 Developed by <a href="https://t.me/nuggettxvec" target="_blank">@nuggettxvec</a>
-            </div>
+    <div id="errorModal" class="modal fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center p-4 z-50 hidden">
+        <div class="bg-[#1b1932] rounded-xl p-8 max-w-sm w-full text-center shadow-xl border border-pink-500/30">
+            <h2 class="text-2xl font-bold mb-4 text-red-400">Gagal Mengunduh</h2>
+            <p id="modalMessage" class="text-gray-300 mb-6"></p>
+            <button id="closeModalBtn" class="w-full px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors duration-300">
+                Tutup
+            </button>
         </div>
     </div>
 
     <script>
-     async function testTokenGDrive() {
-    const token = document.getElementById('botTokenGDrive').value.trim();
-    const tokenStatus = document.getElementById('tokenStatusGDrive');
-    if(!token) {
-        tokenStatus.textContent = '❌ Token tidak boleh kosong';
-        tokenStatus.className = 'token-status invalid';
-        return;
-    }
-    try {
-        const response = await fetch(`https://api.telegram.org/bot${token}/getMe`);
-        const result = await response.json();
-        if(result.ok) {
-            tokenStatus.textContent = `✅ Token valid - Bot: ${result.result.first_name} (@${result.result.username})`;
-            tokenStatus.className = 'token-status valid';
-        } else {
-            tokenStatus.textContent = `❌ Token tidak valid: ${result.description||'Unknown error'}`;
-            tokenStatus.className = 'token-status invalid';
-        }
-    } catch(error) {
-        tokenStatus.textContent = '❌ Gagal menguji token - Cek koneksi internet';
-        tokenStatus.className = 'token-status invalid';
-    }
-}
-
-function saveTokenGDrive() {
-    const newToken = document.getElementById('botTokenGDrive').value.trim();
-    if(!newToken) {
-        showResult('error', 'Token bot tidak boleh kosong!');
-        return;
-    }
-    localStorage.setItem('telegramBotToken', newToken);
-    BOT_TOKEN = newToken;
-    showNotification('Token berhasil disimpan!', 'success');
-    document.getElementById('tokenStatusGDrive').textContent = '✅ Token tersimpan di browser';
-    document.getElementById('tokenStatusGDrive').className = 'token-status valid';
-}
-
-function resetTokenGDrive() {
-    const defaultToken = 'Your_token_bot';
-    document.getElementById('botTokenGDrive').value = defaultToken;
-    localStorage.setItem('telegramBotToken', defaultToken);
-    BOT_TOKEN = defaultToken;
-    showNotification('Token direset ke default!', 'success');
-    document.getElementById('tokenStatusGDrive').className = 'token-status';
-}
-
-async function getGDriveFile() {
-    if(!isAuthenticated) {
-        showResult('error', 'Anda harus login terlebih dahulu!');
-        return;
-    }
-    
-    const gdriveUrl = document.getElementById('gdriveUrl').value.trim();
-    const targetId = document.getElementById('targetIdGDrive').value.trim();
-    const currentToken = document.getElementById('botTokenGDrive').value.trim();
-    
-    if(!currentToken) {
-        showResult('error', 'Token bot harus diisi!');
-        return;
-    }
-    if(!gdriveUrl) {
-        showResult('error', 'URL Google Drive harus diisi!');
-        return;
-    }
-    
-    if(!gdriveUrl.includes('drive.google.com')) {
-        showResult('error', 'URL harus dari Google Drive!');
-        return;
-    }
-    
-    document.getElementById('loadingGDrive').style.display = 'block';
-    document.getElementById('gdriveBtn').disabled = true;
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('gdriveResult').innerHTML = '';
-    
-    try {
-        const apiUrl = `https://api.deline.web.id/downloader/gdrive?url=${encodeURIComponent(gdriveUrl)}`;
-        const response = await fetch(apiUrl);
-        const result = await response.json();
+        const downloaderForm = document.getElementById('downloaderForm');
+        const tiktokUrlInput = document.getElementById('tiktokUrl');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const resultsContainer = document.getElementById('resultsContainer');
         
-        if(result.status && result.result) {
-            const fileData = result.result;
-            
-            let resultHtml = `
-                <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:15px; border:1px solid rgba(138,43,226,0.3);">
-                    <h3 style="color:var(--neon); margin-bottom:15px;">
-                        <i class="fab fa-google-drive"></i> File Ready
-                    </h3>
-                    
-                    <div style="display:flex; gap:20px; margin-bottom:20px;">
-                        <div style="flex:1; text-align:center;">
-                            <div style="font-size:14px; color:#ccc;">File Info</div>
-                            <div style="margin-top:10px; padding:15px; background:rgba(138,43,226,0.1); border-radius:10px;">
-                                <div style="font-size:40px; color:var(--neon);">
-                                    ${getFileIcon(fileData.mimetype)}
-                                </div>
-                                <div style="color:white; font-weight:bold; margin-top:10px;">${fileData.fileName}</div>
-                            </div>
-                        </div>
-                        
-                        <div style="flex:2;">
-                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                                <div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:8px;">
-                                    <div style="font-size:12px; color:#ccc;">Size</div>
-                                    <div style="color:var(--neon); font-weight:bold;">${fileData.fileSize}</div>
-                                </div>
-                                <div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:8px;">
-                                    <div style="font-size:12px; color:#ccc;">Type</div>
-                                    <div style="color:#90ffc7; font-weight:bold;">${getFileType(fileData.mimetype)}</div>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top:15px; background:rgba(0,0,0,0.5); padding:15px; border-radius:8px;">
-                                <div style="font-size:12px; color:#ccc;">Download URL</div>
-                                <div style="color:#aaa; word-break:break-all; font-size:12px;">${fileData.downloadUrl.substring(0, 80)}...</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <button class="btn-token" onclick="downloadFileDirect('${fileData.downloadUrl}', '${fileData.fileName}')" 
-                                style="background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
-                            <i class="fas fa-download"></i> Download Now
-                        </button>
-                        
-                        ${targetId ? `
-                        <button class="btn-token" onclick="sendToTelegramGDrive('${currentToken}', '${targetId}', '${fileData.downloadUrl}', '${fileData.fileName}', '${fileData.fileSize}')" 
-                                style="background:linear-gradient(135deg, var(--success) 0%, #00cc66 100%);">
-                            <i class="fas fa-paper-plane"></i> Send to Telegram
-                        </button>
-                        ` : ''}
-                        
-                        <button class="btn-token" onclick="copyDownloadLink('${fileData.downloadUrl}')" 
-                                style="background:linear-gradient(135deg, var(--info) 0%, #138496 100%);">
-                            <i class="fas fa-copy"></i> Copy Link
-                        </button>
-                    </div>
-                    
-                    <div style="margin-top:15px; padding:10px; background:rgba(0,0,0,0.5); border-radius:8px; border:1px solid rgba(138,43,226,0.2);">
-                        <p style="color:#ccc; font-size:12px; margin:0;">
-                            <i class="fas fa-info-circle"></i> File langsung dari Google Drive. Pastikan file publik atau shared.
-                        </p>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('gdriveResult').innerHTML = resultHtml;
-            showResult('success', '✅ File berhasil diambil dari Google Drive!');
-            
-        } else {
-            throw new Error('API tidak merespons dengan benar');
-        }
+        const videoResult = document.getElementById('videoResult');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoAuthor = document.getElementById('videoAuthor');
+        const downloadNoWatermarkBtn = document.getElementById('downloadNoWatermarkBtn');
+        const downloadWatermarkBtn = document.getElementById('downloadWatermarkBtn');
+        const downloadMusicBtn = document.getElementById('downloadMusicBtn');
+        const downloadCoverBtn = document.getElementById('downloadCoverBtn');
+
+        const imageSliderResult = document.getElementById('imageSliderResult');
+        const imageSliderContainer = document.getElementById('imageSliderContainer');
+        const imageTitle = document.getElementById('imageTitle');
+        const imageAuthor = document.getElementById('imageAuthor');
+        const prevImageBtn = document.getElementById('prevImageBtn');
+        const nextImageBtn = document.getElementById('nextImageBtn');
+        const imageCounter = document.getElementById('imageCounter');
+        const downloadCurrentImageBtn = document.getElementById('downloadCurrentImageBtn');
+        const downloadAllImagesBtn = document.getElementById('downloadAllImagesBtn');
+        const downloadSliderMusicBtn = document.getElementById('downloadSliderMusicBtn');
         
-    } catch(error) {
-        showResult('error', '❌ Error: ' + error.message);
-    } finally {
-        document.getElementById('loadingGDrive').style.display = 'none';
-        document.getElementById('gdriveBtn').disabled = false;
-    }
-}
+        const errorModal = document.getElementById('errorModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalBtn = document.getElementById('closeModalBtn');
 
-function getFileIcon(mimetype) {
-    if(mimetype.includes('image')) return '🖼️';
-    if(mimetype.includes('video')) return '🎬';
-    if(mimetype.includes('audio')) return '🎵';
-    if(mimetype.includes('pdf')) return '📄';
-    if(mimetype.includes('zip') || mimetype.includes('rar')) return '📦';
-    if(mimetype.includes('text')) return '📝';
-    return '📁';
-}
+        const API_ENDPOINTS = [
+            'https://www.tikwm.com/api/?url=',
+            'https://vapis.my.id/api/ttdl?url=',
+            'https://api.vreden.web.id/api/tiktok?url='
+        ];
 
-function getFileType(mimetype) {
-    if(mimetype.includes('image')) return 'Image';
-    if(mimetype.includes('video')) return 'Video';
-    if(mimetype.includes('audio')) return 'Audio';
-    if(mimetype.includes('pdf')) return 'PDF';
-    if(mimetype.includes('zip') || mimetype.includes('rar')) return 'Archive';
-    if(mimetype.includes('text')) return 'Text';
-    return 'File';
-}
+        let currentImageIndex = 0;
+        let imagesData = [];
 
-function downloadFileDirect(url, fileName) {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = fileName;
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showNotification(`✅ Downloading: ${fileName}`, 'success');
-}
+        downloaderForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const url = tiktokUrlInput.value.trim();
+            if (!url) {
+                showModal('Silakan masukkan URL TikTok yang valid.');
+                return;
+            }
 
-async function sendToTelegramGDrive(token, targetId, downloadUrl, fileName, fileSize) {
-    if(!targetId) {
-        showResult('error', 'Target ID harus diisi!');
-        return;
-    }
-    
-    const message = `
-📁 *GOOGLE DRIVE FILE*
+            setLoadingState(true);
+            hideAllResults();
+            showMessage('Memproses tautan, mohon tunggu...', 'text-gray-400');
 
-*Nama File:* ${fileName}
-*Ukuran:* ${fileSize}
-*Download Link:* ${downloadUrl}
-
-🔗 File siap di-download dari Google Drive.
-
-🔧 *Powered by:* Nugget Troll by Ibnuu
-    `;
-    
-    try {
-        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                chat_id: targetId,
-                text: message,
-                parse_mode: 'Markdown'
-            })
-        });
-        
-        showNotification('✅ File info dikirim ke Telegram!', 'success');
-    } catch(error) {
-        showResult('error', '❌ Gagal mengirim ke Telegram');
-    }
-}
-
-function copyDownloadLink(url) {
-    navigator.clipboard.writeText(url).then(() => {
-        showNotification('✅ Download link disalin!', 'success');
-    });
-}
-    async function testTokenNSFW() {
-    const token = document.getElementById('botTokenNSFW').value.trim();
-    const tokenStatus = document.getElementById('tokenStatusNSFW');
-    if(!token) {
-        tokenStatus.textContent = '❌ Token tidak boleh kosong';
-        tokenStatus.className = 'token-status invalid';
-        return;
-    }
-    try {
-        const response = await fetch(`https://api.telegram.org/bot${token}/getMe`);
-        const result = await response.json();
-        if(result.ok) {
-            tokenStatus.textContent = `✅ Token valid - Bot: ${result.result.first_name} (@${result.result.username})`;
-            tokenStatus.className = 'token-status valid';
-        } else {
-            tokenStatus.textContent = `❌ Token tidak valid: ${result.description||'Unknown error'}`;
-            tokenStatus.className = 'token-status invalid';
-        }
-    } catch(error) {
-        tokenStatus.textContent = '❌ Gagal menguji token - Cek koneksi internet';
-        tokenStatus.className = 'token-status invalid';
-    }
-}
-
-function saveTokenNSFW() {
-    const newToken = document.getElementById('botTokenNSFW').value.trim();
-    if(!newToken) {
-        showResult('error', 'Token bot tidak boleh kosong!');
-        return;
-    }
-    localStorage.setItem('telegramBotToken', newToken);
-    BOT_TOKEN = newToken;
-    showNotification('Token berhasil disimpan!', 'success');
-    document.getElementById('tokenStatusNSFW').textContent = '✅ Token tersimpan di browser';
-    document.getElementById('tokenStatusNSFW').className = 'token-status valid';
-}
-
-function resetTokenNSFW() {
-    const defaultToken = 'Your_token_bot';
-    document.getElementById('botTokenNSFW').value = defaultToken;
-    localStorage.setItem('telegramBotToken', defaultToken);
-    BOT_TOKEN = defaultToken;
-    showNotification('Token direset ke default!', 'success');
-    document.getElementById('tokenStatusNSFW').className = 'token-status';
-}
-
-async function checkNSFW() {
-    if(!isAuthenticated) {
-        showResult('error', 'Anda harus login terlebih dahulu!');
-        return;
-    }
-    
-    const imageUrl = document.getElementById('imageUrlNSFW').value.trim();
-    const targetId = document.getElementById('targetIdNSFW').value.trim();
-    const currentToken = document.getElementById('botTokenNSFW').value.trim();
-    
-    if(!currentToken) {
-        showResult('error', 'Token bot harus diisi kocak!');
-        return;
-    }
-    if(!imageUrl) {
-        showResult('error', 'URL gambar harus diisi!');
-        return;
-    }
-    
-    if(!imageUrl.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
-        showResult('error', 'URL harus link gambar (jpg, png, gif, webp)');
-        return;
-    }
-    
-    document.getElementById('loadingNSFW').style.display = 'block';
-    document.getElementById('nsfwBtn').disabled = true;
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('nsfwResult').innerHTML = '';
-    
-    try {
-        const apiUrl = `https://api.deline.web.id/ai/nsfwcheck?url=${encodeURIComponent(imageUrl)}`;
-        const response = await fetch(apiUrl);
-        const result = await response.json();
-        
-        if(result.status && result.result) {
-            const nsfwData = result.result;
-            const isSafe = nsfwData.labelName === 'Not Porn';
-            const confidence = (nsfwData.confidence * 100).toFixed(1);
-            
-            let resultHtml = `
-                <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:15px; border:1px solid ${isSafe ? 'rgba(0,255,127,0.3)' : 'rgba(255,71,87,0.3)'};">
-                    <h3 style="color:${isSafe ? 'var(--success)' : 'var(--danger)'}; margin-bottom:15px;">
-                        ${isSafe ? '✅ AMAN' : '⚠️ NSFW DETECTED'}
-                    </h3>
-                    
-                    <div style="display:flex; gap:20px; margin-bottom:20px;">
-                        <div style="flex:1; text-align:center;">
-                            <div style="font-size:14px; color:#ccc;">Gambar</div>
-                            <div style="margin-top:10px; border-radius:10px; overflow:hidden; border:2px solid ${isSafe ? 'rgba(0,255,127,0.3)' : 'rgba(255,71,87,0.3)'};">
-                                <img src="${imageUrl}" style="width:100%; height:150px; object-fit:cover;" onerror="this.src='https://via.placeholder.com/300/1a1a2e/ffffff?text=Image+Error'">
-                            </div>
-                        </div>
-                        
-                        <div style="flex:2;">
-                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                                <div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:8px;">
-                                    <div style="font-size:12px; color:#ccc;">Status</div>
-                                    <div style="color:${isSafe ? 'var(--success)' : 'var(--danger)'}; font-weight:bold;">${nsfwData.labelName}</div>
-                                </div>
-                                <div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:8px;">
-                                    <div style="font-size:12px; color:#ccc;">Confidence</div>
-                                    <div style="color:${confidence > 80 ? 'var(--success)' : '#ffeb3b'}; font-weight:bold;">${confidence}%</div>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top:15px; background:rgba(0,0,0,0.5); padding:15px; border-radius:8px;">
-                                <div style="font-size:12px; color:#ccc;">URL</div>
-                                <div style="color:#aaa; word-break:break-all; font-size:12px;">${imageUrl.substring(0, 100)}${imageUrl.length > 100 ? '...' : ''}</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                        <button class="btn-token" onclick="sendToTelegramNSFW('${currentToken}', '${targetId}', ${isSafe}, '${nsfwData.labelName}', '${confidence}', '${imageUrl}')" 
-                                style="background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
-                            <i class="fas fa-paper-plane"></i> Kirim Hasil
-                        </button>
-                        <button class="btn-token" onclick="checkNSFW()" 
-                                style="background:linear-gradient(135deg, var(--info) 0%, #138496 100%);">
-                            <i class="fas fa-redo"></i> Cek Lagi
-                        </button>
-                        <button class="btn-token" onclick="document.getElementById('imageUrlNSFW').value=''" 
-                                style="background:linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);">
-                            <i class="fas fa-trash"></i> Clear
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('nsfwResult').innerHTML = resultHtml;
-            showResult('success', `✅ Analisis selesai! ${isSafe ? 'Gambar aman' : 'NSFW terdeteksi'}`);
-            
-        } else {
-            throw new Error('API tidak merespons dengan benar');
-        }
-        
-    } catch(error) {
-        showResult('error', '❌ Error: ' + error.message);
-    } finally {
-        document.getElementById('loadingNSFW').style.display = 'none';
-        document.getElementById('nsfwBtn').disabled = false;
-    }
-}
-
-async function sendToTelegramNSFW(token, targetId, isSafe, labelName, confidence, imageUrl) {
-    if(!targetId) {
-        showResult('error', 'Target ID harus diisi untuk mengirim ke Telegram!');
-        return;
-    }
-    
-    const statusIcon = isSafe ? '✅' : '⚠️';
-    const statusColor = isSafe ? '🟢' : '🔴';
-    
-    const message = `
-${statusIcon} *NSFW CHECK RESULT* ${statusIcon}
-
-*Status:* ${labelName} ${statusColor}
-*Confidence:* ${confidence}%
-*URL:* ${imageUrl.substring(0, 50)}${imageUrl.length > 50 ? '...' : ''}
-
-*AI Analysis:* ${isSafe ? 'Gambar ini AMAN dan tidak mengandung konten NSFW.' : '⚠️ PERINGATAN: Gambar ini terdeteksi mengandung konten NSFW!'}
-
-🔧 *Powered by:* Nugget Troll by Ibnuu
-    `;
-    
-    try {
-        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                chat_id: targetId,
-                text: message,
-                parse_mode: 'Markdown'
-            })
-        });
-        
-        showNotification('✅ Hasil dikirim ke Telegram!', 'success');
-    } catch(error) {
-        showResult('error', '❌ Gagal mengirim ke Telegram');
-    }
-}
-    let aiChats = [];
-
-async function askAI() {
-    const prompt = document.getElementById('aiPrompt').value.trim();
-    
-    if(!prompt) {
-        showResult('error', 'Pertanyaan tidak boleh kosong!');
-        return;
-    }
-    
-    document.getElementById('loadingAI').style.display = 'block';
-    document.getElementById('aiBtn').disabled = true;
-    document.getElementById('result').style.display = 'none';
-    
-    try {
-        const apiUrl = `https://api.finix-id.my.id/ai/public?prompt=${encodeURIComponent(prompt)}`;
-        const response = await fetch(apiUrl);
-        const result = await response.json();
-        
-        if(result.status && result.result) {
-            const aiResponse = result.result;
-            
-            aiChats.push({
-                prompt: prompt,
-                response: aiResponse,
-                time: new Date().toLocaleTimeString()
-            });
-            
-            document.getElementById('aiPrompt').value = '';
-            updateChatDisplay();
-            showResult('success', '✅ AI berhasil merespons!');
-            
-        } else {
-            throw new Error('API tidak merespons');
-        }
-        
-    } catch(error) {
-        aiChats.push({
-            prompt: prompt,
-            response: `❌ Error: ${error.message}`,
-            time: new Date().toLocaleTimeString()
-        });
-        updateChatDisplay();
-        showResult('error', '❌ Error: ' + error.message);
-    } finally {
-        document.getElementById('loadingAI').style.display = 'none';
-        document.getElementById('aiBtn').disabled = false;
-    }
-}
-
-function updateChatDisplay() {
-    const container = document.getElementById('aiChatContainer');
-    
-    if(aiChats.length === 0) {
-        container.innerHTML = `
-            <div style="background:rgba(0,0,0,0.7); padding:30px; border-radius:15px; border:1px solid rgba(138,43,226,0.3); text-align:center;">
-                <div style="font-size:60px; color:var(--neon); margin-bottom:15px;">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3 style="color:var(--neon); margin-bottom:10px;">AI Chat Assistant</h3>
-                <p style="color:#ccc;">Tanya apa saja ke AI. Respons akan muncul di sini.</p>
-            </div>
-        `;
-        return;
-    }
-    
-    let html = `
-        <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:15px; border:1px solid rgba(138,43,226,0.3);">
-            <h3 style="color:var(--neon); margin-bottom:20px;">
-                <i class="fas fa-comments"></i> AI Responses
-            </h3>
-            
-            <div style="max-height:400px; overflow-y:auto;">
-    `;
-    
-    aiChats.forEach((chat, index) => {
-        html += `
-            <div style="margin-bottom:20px; background:rgba(0,0,0,0.5); padding:15px; border-radius:10px; border:1px solid rgba(138,43,226,0.2);">
-                <div style="color:#ccc; font-size:12px; margin-bottom:5px;">
-                    <i class="fas fa-user"></i> You • ${chat.time}
-                </div>
-                <div style="color:white; white-space:pre-wrap; margin-bottom:10px;">${chat.prompt}</div>
-                
-                <div style="color:#90ffc7; font-size:12px; margin-bottom:5px;">
-                    <i class="fas fa-robot"></i> AI • ${chat.time}
-                </div>
-                <div style="color:#90ffc7; white-space:pre-wrap;">${chat.response}</div>
-            </div>
-        `;
-    });
-    
-    html += `
-            </div>
-            
-            <button class="btn-token" onclick="clearChats()" 
-                    style="margin-top:15px; background:rgba(255,71,87,0.3);">
-                <i class="fas fa-trash"></i> Clear Chat
-            </button>
-        </div>
-    `;
-    
-    container.innerHTML = html;
-    
-    const chatDiv = container.querySelector('div div');
-    if(chatDiv) {
-        chatDiv.scrollTop = chatDiv.scrollHeight;
-    }
-}
-
-function clearChats() {
-    if(aiChats.length > 0 && confirm('Hapus semua chat?')) {
-        aiChats = [];
-        updateChatDisplay();
-        showNotification('🗑️ Chat dihapus!', 'success');
-    }
-}
-    async function shortenURL() {
-    const longUrl = document.getElementById('shortUrlInput').value.trim();
-    
-    if (!longUrl) {
-        showResult('error', 'URL tidak boleh kosong kocak!');
-        return;
-    }
-    
-    try {
-        new URL(longUrl);
-    } catch (_) {
-        showResult('error', 'Format URL tidak valid. Pastikan URL dimulai dengan http:// atau https://');
-        return;
-    }
-    
-    document.getElementById('loadingShortUrl').style.display = 'block';
-    document.getElementById('shortUrlBtn').disabled = true;
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('shortUrlResult').innerHTML = '';
-    
-    try {
-        const apiUrl = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`;
-        const response = await fetch(apiUrl);
-        
-        if (!response.ok) {
-            throw new Error(`Gagal memanggil API (Status: ${response.status})`);
-        }
-        
-        const shortUrl = await response.text();
-        
-        let resultHtml = `
-            <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:15px; border:1px solid rgba(138,43,226,0.3);">
-                <h3 style="color:var(--neon); margin-bottom:15px;">
-                    <i class="fas fa-check-circle"></i> URL Berhasil Dipersingkat!
-                </h3>
-                
-                <div style="margin-bottom:20px;">
-                    <p style="color:#ccc; margin-bottom:5px;"><strong>URL Asli:</strong></p>
-                    <div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:8px; word-break:break-all; color:#aaa;">
-                        ${longUrl}
-                    </div>
-                </div>
-                
-                <div style="margin-bottom:25px;">
-                    <p style="color:#ccc; margin-bottom:5px;"><strong>Short URL (TinyURL):</strong></p>
-                    <div style="background:rgba(0,255,127,0.1); padding:15px; border-radius:8px; border:1px solid rgba(0,255,127,0.3);">
-                        <div style="font-size:18px; color:var(--neon); word-break:break-all; font-weight:bold;">${shortUrl}</div>
-                    </div>
-                    <small style="color:#90ffc7; display:block; margin-top:5px;">URL pendek ini dapat dibagikan.</small>
-                </div>
-                
-                <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <button class="btn-token" onclick="copyToClipboard('${shortUrl}')" 
-                            style="background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
-                        <i class="fas fa-copy"></i> Copy Short URL
-                    </button>
-                    <button class="btn-token" onclick="testShortLink('${shortUrl}')" 
-                            style="background:linear-gradient(135deg, var(--info) 0%, #138496 100%);">
-                        <i class="fas fa-external-link-alt"></i> Test Link
-                    </button>
-                    <button class="btn-token" onclick="shortenURL()" 
-                            style="background:linear-gradient(135deg, var(--success) 0%, #00cc66 100%);">
-                        <i class="fas fa-redo"></i> Shorten Another
-                    </button>
-                </div>
-            </div>
-        `;
-        
-        document.getElementById('shortUrlResult').innerHTML = resultHtml;
-        showResult('success', '✅ URL berhasil dipersingkat!');
-        
-    } catch(error) {
-        console.error('Error shortening URL:', error);
-        showResult('error', '❌ Gagal mempersingkat URL. Coba lagi nanti atau gunakan URL lain.');
-    } finally {
-        document.getElementById('loadingShortUrl').style.display = 'none';
-        document.getElementById('shortUrlBtn').disabled = false;
-    }
-}
-
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        showNotification('✅ URL berhasil disalin!', 'success');
-    });
-}
-
-function testShortLink(url) {
-    window.open(url, '_blank');
-    showNotification('🔗 membuka hasil short url... ', 'info');
-}
-    let animeScheduleData = null;
-
-async function loadAnimeSchedule() {
-    document.getElementById('loadingAnimeSchedule').style.display = 'block';
-    document.getElementById('animeScheduleBtn').disabled = true;
-    document.getElementById('animeScheduleContainer').innerHTML = '';
-    
-    try {
-        const apiUrl = 'https://www.sankavollerei.com/anime/schedule';
-        const response = await fetch(apiUrl);
-        const result = await response.json();
-        
-        if(result.status === 'success' && result.data) {
-            animeScheduleData = result.data;
-            displayAnimeSchedule();
-            showResult('success', '✅ Jadwal anime berhasil dimuat!');
-        } else {
-            showResult('error', '❌ Gagal memuat jadwal anime');
-        }
-    } catch(error) {
-        showResult('error', '❌ Error: ' + error.message);
-    } finally {
-        document.getElementById('loadingAnimeSchedule').style.display = 'none';
-        document.getElementById('animeScheduleBtn').disabled = false;
-    }
-}
-function openAnimeLink(slug) {
-    window.open(`https://otakudesu.best/anime/${slug}`, '_blank');
-    showNotification('✅ Membuka info anime...', 'info');
-}
-
-function copyAnimeTitle(title) {
-    navigator.clipboard.writeText(title).then(() => {
-        showNotification(`✅ "${title.substring(0, 30)}${title.length > 30 ? '...' : ''}" disalin!`, 'success');
-    }).catch(err => {
-        console.error('Copy failed:', err);
-        showNotification('❌ Gagal menyalin teks', 'error');
-    });
-}
-
-function displayAnimeSchedule() {
-    if(!animeScheduleData) return;
-    
-    const container = document.getElementById('animeScheduleContainer');
-    let html = '';
-    
-    const days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu', 'Random'];
-    
-    html += `<div style="display:flex; overflow-x:auto; gap:5px; margin-bottom:20px; padding-bottom:10px;" id="dayTabsContainer">`;
-    
-    days.forEach(day => {
-        const hasData = animeScheduleData.some(item => item.day === day);
-        if(hasData) {
-            html += `
-                <button onclick="showAnimeDay('${day}')" id="tab-${day}" 
-                        style="padding:10px 15px; background:rgba(138,43,226,0.2); border:none; border-radius:8px; 
-                               color:var(--neon); cursor:pointer; white-space:nowrap; border:1px solid rgba(138,43,226,0.3);">
-                    ${day}
-                </button>
-            `;
-        }
-    });
-    
-    html += `</div>`;
-    html += `<div id="animeDayContent"></div>`;
-    container.innerHTML = html;
-    
-    const firstDay = animeScheduleData[0]?.day || 'Senin';
-    showAnimeDay(firstDay);
-}
-function showNotification(message, type) {
-    const notification = document.getElementById('floatingNotification');
-    notification.textContent = message;
-    notification.className = `floating-notification ${type} show`;
-    setTimeout(() => {
-        notification.classList.remove('show');
-    }, 3000);
-}
-
-function showAnimeDay(day) {
-    if(!animeScheduleData) return;
-    
-    const dayData = animeScheduleData.find(item => item.day === day);
-    if(!dayData) return;
-    
-    const tabsContainer = document.getElementById('dayTabsContainer');
-    if(tabsContainer) {
-        const buttons = tabsContainer.querySelectorAll('button');
-        buttons.forEach(btn => {
-            btn.style.background = 'rgba(138,43,226,0.2)';
-            btn.style.borderColor = 'rgba(138,43,226,0.3)';
-        });
-        
-        const activeTab = document.getElementById(`tab-${day}`);
-        if(activeTab) {
-            activeTab.style.background = 'rgba(138,43,226,0.5)';
-            activeTab.style.borderColor = 'var(--neon)';
-        }
-    }
-    
-    let html = `
-        <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:15px; border:1px solid rgba(138,43,226,0.3);">
-            <h3 style="color:var(--neon); margin-bottom:20px; display:flex; align-items:center; gap:10px;">
-                <i class="fas fa-calendar-day"></i> ${day}
-                <span style="font-size:14px; color:#ccc; margin-left:auto;">${dayData.anime_list.length} Anime</span>
-            </h3>
-            
-            <div class="anime-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:15px;">
-    `;
-    
-    dayData.anime_list.forEach(anime => {
-        html += `
-            <div class="anime-card" 
-                 style="background:rgba(0,0,0,0.5); border-radius:12px; overflow:hidden; border:1px solid rgba(138,43,226,0.2); transition:all 0.3s ease;">
-                <div style="height:150px; overflow:hidden;">
-                    <img src="${anime.poster}" alt="${anime.title}" 
-                         style="width:100%; height:100%; object-fit:cover; transition:transform 0.3s ease;">
-                </div>
-                <div style="padding:15px;">
-                    <h4 style="color:var(--neon); font-size:14px; margin-bottom:10px; height:40px; overflow:hidden;">
-                        ${anime.title}
-                    </h4>
-                    <div style="display:flex; gap:8px; margin-top:15px;">
-                        <button class="btn-token" onclick="openAnimeLink('${anime.slug}')" 
-                                style="flex:1; background:rgba(138,43,226,0.3); font-size:12px; padding:8px;">
-                            <i class="fas fa-external-link-alt"></i> Info
-                        </button>
-                        <button class="btn-token" onclick="copyAnimeTitle('${anime.title.replace(/'/g, "\\'")}')" 
-                                style="flex:1; background:rgba(23,162,184,0.3); font-size:12px; padding:8px;">
-                            <i class="fas fa-copy"></i> Copy
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-    
-    html += `
-            </div>
-            
-            <div style="margin-top:20px; padding:15px; background:rgba(138,43,226,0.1); border-radius:10px;">
-                <p style="color:#ccc; margin:0; font-size:14px;">
-                    <i class="fas fa-info-circle"></i> Data dari otakudesu.best • Total: ${dayData.anime_list.length} anime tayang di ${day}
-                </p>
-            </div>
-        </div>
-    `;
-    
-    document.getElementById('animeDayContent').innerHTML = html;
-    
-    document.querySelectorAll('.anime-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-            this.style.boxShadow = '0 10px 20px rgba(138,43,226,0.3)';
-            this.style.borderColor = 'var(--neon)';
-            const img = this.querySelector('img');
-            if(img) img.style.transform = 'scale(1.1)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = 'none';
-            this.style.borderColor = 'rgba(138,43,226,0.2)';
-            const img = this.querySelector('img');
-            if(img) img.style.transform = 'scale(1)';
-        });
-    });
-}
-    async function downloadYtmp3() {
-    const youtubeUrl = document.getElementById('youtubeUrl').value.trim();
-    
-    if(!youtubeUrl) {
-        showResult('error', 'URL YouTube harus diisi!');
-        return;
-    }
-    if(!youtubeUrl.includes('youtube.com') && !youtubeUrl.includes('youtu.be')) {
-        showResult('error', 'URL harus dari YouTube!');
-        return;
-    }
-    
-    document.getElementById('loadingYtmp3').style.display = 'block';
-    document.getElementById('ytmp3Btn').disabled = true;
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('ytmp3Preview').innerHTML = '';
-    
-    try {
-        const apiUrl = `https://smail.my.id/ytmp3?url=${encodeURIComponent(youtubeUrl)}`;
-        
-        let previewHtml = `
-            <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:15px; border:1px solid rgba(138,43,226,0.3);">
-                <h3 style="color:var(--neon); margin-bottom:15px;">
-                    <i class="fab fa-youtube"></i> YouTube MP3 Ready
-                </h3>
-                <p style="color:#ccc; margin-bottom:20px;">Audio berhasil diproses, klik tombol di bawah untuk mendownload:</p>
-                
-                <audio controls style="width:100%; margin-bottom:20px;">
-                    <source src="${apiUrl}" type="audio/mpeg">
-                    Browser Anda tidak mendukung pemutar audio.
-                </audio>
-                
-                <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <button class="btn-token" onclick="downloadAudioDirect('${apiUrl}')" 
-                            style="background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
-                        <i class="fas fa-download"></i> Download MP3
-                    </button>
-                    <button class="btn-token" onclick="playAudio('${apiUrl}')" 
-                            style="background:linear-gradient(135deg, var(--success) 0%, #00cc66 100%);">
-                        <i class="fas fa-play"></i> Putar Sekarang
-                    </button>
-                    <button class="btn-token" onclick="copyAudioLink('${apiUrl}')" 
-                            style="background:linear-gradient(135deg, var(--info) 0%, #138496 100%);">
-                        <i class="fas fa-copy"></i> Copy Link
-                    </button>
-                </div>
-            </div>
-        `;
-        
-        document.getElementById('ytmp3Preview').innerHTML = previewHtml;
-        showResult('success', '✅ Audio YouTube berhasil diproses!');
-        
-    } catch(error) {
-        showResult('error', '❌ Terjadi kesalahan: ' + error.message);
-    } finally {
-        document.getElementById('loadingYtmp3').style.display = 'none';
-        document.getElementById('ytmp3Btn').disabled = false;
-    }
-}
-
-function downloadAudioDirect(url) {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `youtube-audio-${Date.now()}.mp3`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    showNotification('✅ Download MP3 dimulai!', 'success');
-}
-
-function playAudio(url) {
-    const audioPlayer = document.querySelector('#ytmp3Preview audio');
-    if(audioPlayer) {
-        audioPlayer.play();
-        showNotification('🎵 Memutar audio...', 'success');
-    }
-}
-
-function copyAudioLink(url) {
-    navigator.clipboard.writeText(url).then(() => {
-        showNotification('✅ Link audio disalin ke clipboard!', 'success');
-    });
-}
-    async function trackIPLocation() {
-    const ipAddress = document.getElementById('ipAddress').value.trim();
-    
-    if(!ipAddress) {
-        showResult('error', 'IP Address harus diisi!');
-        return;
-    }
-    if(!/^(\d{1,3}\.){3}\d{1,3}$/.test(ipAddress)) {
-        showResult('error', 'Format IP Address tidak valid! Contoh: 112.90.150.204');
-        return;
-    }
-    
-    document.getElementById('loadingTrackIP').style.display = 'block';
-    document.getElementById('trackIPBtn').disabled = true;
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('trackIPPreview').innerHTML = '';
-    
-    try {
-        const apiUrl = `https://ipwho.is/${ipAddress}`;
-        const response = await fetch(apiUrl);
-        const res = await response.json();
-        
-        if(!res.success) {
-            throw new Error(`IP ${ipAddress} tidak ditemukan!`);
-        }
-        
-        const formatIPInfo = (info) => {
-            return `
-• IP: ${info.ip || 'N/A'}
-• Type: ${info.type || 'N/A'}
-• Continent: ${info.continent || 'N/A'}
-• Country: ${info.country || 'N/A'} ${info.flag?.emoji || ''}
-• Region: ${info.region || 'N/A'}
-• City: ${info.city || 'N/A'}
-• Coordinates: ${info.latitude || 'N/A'}, ${info.longitude || 'N/A'}
-• Postal Code: ${info.postal || 'N/A'}
-• ISP: ${info.connection?.isp || 'N/A'}
-• Organization: ${info.connection?.org || 'N/A'}
-• Timezone: ${info.timezone?.id || 'N/A'}
-• Current Time: ${info.timezone?.current_time || 'N/A'}
-• Is EU: ${info.is_eu ? 'Yes' : 'No'}
-            `;
-        };
-        
-        let previewHtml = `
-            <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:15px; border:1px solid rgba(138,43,226,0.3);">
-                <h3 style="color:var(--neon); margin-bottom:15px;">
-                    <i class="fas fa-map-marker-alt"></i> Hasil Pelacakan IP
-                </h3>
-                <div style="display:flex; gap:20px; margin-bottom:20px;">
-                    <div style="flex:1; padding:15px; background:rgba(138,43,226,0.1); border-radius:10px;">
-                        <div style="font-size:14px; color:#ccc;">IP ADDRESS</div>
-                        <div style="font-size:24px; font-weight:bold; color:var(--neon);">${res.ip}</div>
-                    </div>
-                    <div style="flex:1; padding:15px; background:rgba(138,43,226,0.1); border-radius:10px;">
-                        <div style="font-size:14px; color:#ccc;">LOCATION</div>
-                        <div style="font-size:20px; font-weight:bold; color:var(--neon);">${res.city}, ${res.country}</div>
-                    </div>
-                </div>
-                <pre style="color:#ccc; white-space:pre-wrap; font-family:monospace; background:rgba(0,0,0,0.5); padding:15px; border-radius:10px;">${formatIPInfo(res)}</pre>
-                
-                <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
-                    <button class="btn-token" onclick="copyToClipboard('${res.ip}')" 
-                            style="background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
-                        <i class="fas fa-copy"></i> Copy IP
-                    </button>
-                    <button class="btn-token" onclick="copyToClipboard('${res.latitude}, ${res.longitude}')" 
-                            style="background:linear-gradient(135deg, var(--info) 0%, #138496 100%);">
-                        <i class="fas fa-map-pin"></i> Copy Coordinates
-                    </button>
-                    <button class="btn-token" onclick="openInGoogleMaps(${res.latitude}, ${res.longitude})" 
-                            style="background:linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);">
-                        <i class="fab fa-google"></i> Open in Maps
-                    </button>
-                </div>
-            </div>
-        `;
-        
-        document.getElementById('trackIPPreview').innerHTML = previewHtml;
-        showResult('success', '✅ Lokasi IP berhasil dilacak!');
-        
-    } catch(error) {
-        showResult('error', '❌ Error: ' + error.message);
-    } finally {
-        document.getElementById('loadingTrackIP').style.display = 'none';
-        document.getElementById('trackIPBtn').disabled = false;
-    }
-}
-
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        showNotification('✅ Berhasil disalin ke clipboard!', 'success');
-    });
-}
-
-function openInGoogleMaps(lat, lng) {
-    window.open(`https://www.google.com/maps?q=${lat},${lng}`, '_blank');
-}
-    
-        function simpleHash(str){
-            let hash=0;for(let i=0;i<str.length;i++){const char=str.charCodeAt(i);hash=((hash<<5)-hash)+char;hash=hash&hash}return hash
-        }
-        const ACCESS_KEY_HASH=simpleHash("nuggetxnala");let isAuthenticated=false;
-        function showNotification(message,type){
-            const notification=document.getElementById('floatingNotification');notification.textContent=message;
-            notification.className=`floating-notification ${type} show`;setTimeout(()=>{notification.classList.remove('show')},3000)
-        }
-        function checkAccessKey(){
-            const inputKey=document.getElementById('accessKey').value.trim();const loginError=document.getElementById('loginError');
-            if(simpleHash(inputKey)===ACCESS_KEY_HASH){isAuthenticated=true;document.getElementById('loginContainer').style.display='none';
-            document.getElementById('mainContainer').style.display='flex';showNotification('Akses berhasil! Selamat menggunakan tools.','success')}
-            else{loginError.style.display='block';setTimeout(()=>{loginError.style.display='none'},3000)}
-        }
-        document.getElementById('accessKey').addEventListener('keypress',function(e){if(e.key==='Enter'){checkAccessKey()}});
-        function createMatrixEffect(){
-            const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');const matrixBg=document.getElementById('matrixBg');
-            matrixBg.appendChild(canvas);canvas.width=window.innerWidth;canvas.height=window.innerHeight;
-            const chars="アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789";
-            const charArray=chars.split("");const fontSize=14;const columns=canvas.width/fontSize;const drops=[];
-            for(let x=0;x<columns;x++){drops[x]=1}
-            function draw(){
-                ctx.fillStyle="rgba(0,0,0,0.04)";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#0f0";ctx.font=fontSize+"px monospace";
-                for(let i=0;i<drops.length;i++){
-                    const text=charArray[Math.floor(Math.random()*charArray.length)];ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-                    if(drops[i]*fontSize>canvas.height&&Math.random()>0.975){drops[i]=0}drops[i]++
+            let responseData = null;
+            for (const apiUrl of API_ENDPOINTS) {
+                try {
+                    showMessage(`Mencoba server #${API_ENDPOINTS.indexOf(apiUrl) + 1}...`, 'text-yellow-400');
+                    const data = await fetchApi(apiUrl + encodeURIComponent(url));
+                    const parsedData = parseApiResponse(data, apiUrl);
+                    if (parsedData) {
+                        responseData = parsedData;
+                        break;
+                    }
+                } catch (error) {
+                    console.error(`Error with API ${apiUrl}:`, error);
                 }
             }
-            setInterval(draw,35);window.addEventListener('resize',function(){canvas.width=window.innerWidth;canvas.height=window.innerHeight})
-        }
-        createMatrixEffect();let BOT_TOKEN='Your_token_bot';let currentCount=5;let currentPinterestCount=5;let currentTool='spammer';let pinterestResults=[];let instagramData=null;
-        function toggleSidebar(){
-            const sidebar=document.getElementById('sidebar');const overlay=document.getElementById('sidebarOverlay');
-            sidebar.classList.toggle('active');overlay.classList.toggle('active')
-        }
-        function switchTool(tool){
-            currentTool=tool;document.querySelectorAll('.tool-item').forEach(item=>{item.classList.remove('active')});
-            document.querySelectorAll('.tool-content').forEach(content=>{content.classList.remove('active')});
-            event.target.classList.add('active');document.getElementById(tool+'Tool').classList.add('active');toggleSidebar()
-        }
-        function loadSavedToken(){
-            const savedToken=localStorage.getItem('telegramBotToken');if(savedToken){
-                document.getElementById('botToken').value=savedToken;document.getElementById('botTokenTiktok').value=savedToken;
-                document.getElementById('botTokenPinterest').value=savedToken;
-                document.getElementById('botTokenInstagram').value=savedToken;          
-                document.getElementById('botTokenNSFW').value = savedToken;
-                document.getElementById('botTokenGDrive').value = savedToken;
-                BOT_TOKEN=savedToken
+
+            setLoadingState(false);
+
+            if (responseData) {
+                hideMessage();
+                displayResults(responseData);
+            } else {
+                showModal('Yah, video/foto tidak dapat diunduh saat ini. Coba lagi nanti atau gunakan tautan lain.');
+                hideMessage();
+            }
+        });
+
+        async function fetchApi(apiUrl) {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.statusText}`);
+            }
+            try {
+                return await response.json();
+            } catch (e) {
+                throw new Error('Respons bukan JSON yang valid.');
             }
         }
-        async function testToken(){
-            const token=document.getElementById('botToken').value.trim();const tokenStatus=document.getElementById('tokenStatus');
-            if(!token){tokenStatus.textContent='❌ Token tidak boleh kosong';tokenStatus.className='token-status invalid';return}
-            try{
-                const response=await fetch(`https://api.telegram.org/bot${token}/getMe`);const result=await response.json();
-                if(result.ok){tokenStatus.textContent=`✅ Token valid - Bot: ${result.result.first_name} (@${result.result.username})`;tokenStatus.className='token-status valid'}
-                else{tokenStatus.textContent=`❌ Token tidak valid: ${result.description||'Unknown error'}`;tokenStatus.className='token-status invalid'}
-            }catch(error){tokenStatus.textContent='❌ Gagal menguji token - Cek koneksi internet';tokenStatus.className='token-status invalid'}
-        }
-        async function testTokenTiktok(){
-            const token=document.getElementById('botTokenTiktok').value.trim();const tokenStatus=document.getElementById('tokenStatusTiktok');
-            if(!token){tokenStatus.textContent='❌ Token tidak boleh kosong';tokenStatus.className='token-status invalid';return}
-            try{
-                const response=await fetch(`https://api.telegram.org/bot${token}/getMe`);const result=await response.json();
-                if(result.ok){tokenStatus.textContent=`✅ Token valid - Bot: ${result.result.first_name} (@${result.result.username})`;tokenStatus.className='token-status valid'}
-                else{tokenStatus.textContent=`❌ Token tidak valid: ${result.description||'Unknown error'}`;tokenStatus.className='token-status invalid'}
-            }catch(error){tokenStatus.textContent='❌ Gagal menguji token - Cek koneksi internet';tokenStatus.className='token-status invalid'}
-        }
-        async function testTokenPinterest(){
-            const token=document.getElementById('botTokenPinterest').value.trim();const tokenStatus=document.getElementById('tokenStatusPinterest');
-            if(!token){tokenStatus.textContent='❌ Token tidak boleh kosong';tokenStatus.className='token-status invalid';return}
-            try{
-                const response=await fetch(`https://api.telegram.org/bot${token}/getMe`);const result=await response.json();
-                if(result.ok){tokenStatus.textContent=`✅ Token valid - Bot: ${result.result.first_name} (@${result.result.username})`;tokenStatus.className='token-status valid'}
-                else{tokenStatus.textContent=`❌ Token tidak valid: ${result.description||'Unknown error'}`;tokenStatus.className='token-status invalid'}
-            }catch(error){tokenStatus.textContent='❌ Gagal menguji token - Cek koneksi internet';tokenStatus.className='token-status invalid'}
-        }
-        async function testTokenInstagram(){
-            const token=document.getElementById('botTokenInstagram').value.trim();const tokenStatus=document.getElementById('tokenStatusInstagram');
-            if(!token){tokenStatus.textContent='❌ Token tidak boleh kosong';tokenStatus.className='token-status invalid';return}
-            try{
-                const response=await fetch(`https://api.telegram.org/bot${token}/getMe`);const result=await response.json();
-                if(result.ok){tokenStatus.textContent=`✅ Token valid - Bot: ${result.result.first_name} (@${result.result.username})`;tokenStatus.className='token-status valid'}
-                else{tokenStatus.textContent=`❌ Token tidak valid: ${result.description||'Unknown error'}`;tokenStatus.className='token-status invalid'}
-            }catch(error){tokenStatus.textContent='❌ Gagal menguji token - Cek koneksi internet';tokenStatus.className='token-status invalid'}
-        }
-        function saveToken(){
-            const newToken=document.getElementById('botToken').value.trim();if(!newToken){showResult('error','Token bot tidak boleh kosong!');return}
-            localStorage.setItem('telegramBotToken',newToken);BOT_TOKEN=newToken;showNotification('Token berhasil disimpan!','success');
-            document.getElementById('tokenStatus').textContent='✅ Token tersimpan di browser';document.getElementById('tokenStatus').className='token-status valid'
-        }
-        function saveTokenTiktok(){
-            const newToken=document.getElementById('botTokenTiktok').value.trim();if(!newToken){showResult('error','Token bot tidak boleh kosong!');return}
-            localStorage.setItem('telegramBotToken',newToken);BOT_TOKEN=newToken;showNotification('Token berhasil disimpan!','success');
-            document.getElementById('tokenStatusTiktok').textContent='✅ Token tersimpan di browser';document.getElementById('tokenStatusTiktok').className='token-status valid'
-        }
-        function saveTokenPinterest(){
-            const newToken=document.getElementById('botTokenPinterest').value.trim();if(!newToken){showResult('error','Token bot tidak boleh kosong!');return}
-            localStorage.setItem('telegramBotToken',newToken);BOT_TOKEN=newToken;showNotification('Token berhasil disimpan!','success');
-            document.getElementById('tokenStatusPinterest').textContent='✅ Token tersimpan di browser';document.getElementById('tokenStatusPinterest').className='token-status valid'
-        }
-        function saveTokenInstagram(){
-            const newToken=document.getElementById('botTokenInstagram').value.trim();if(!newToken){showResult('error','Token bot tidak boleh kosong!');return}
-            localStorage.setItem('telegramBotToken',newToken);BOT_TOKEN=newToken;showNotification('Token berhasil disimpan!','success');
-            document.getElementById('tokenStatusInstagram').textContent='✅ Token tersimpan di browser';document.getElementById('tokenStatusInstagram').className='token-status valid'
-        }
-        function resetToken(){
-            const defaultToken='Your_token_bot';document.getElementById('botToken').value=defaultToken;localStorage.setItem('telegramBotToken',defaultToken);
-            BOT_TOKEN=defaultToken;showNotification('Token direset ke default!','success');document.getElementById('tokenStatus').className='token-status'
-        }
-        function resetTokenTiktok(){
-            const defaultToken='Your_token_bot';document.getElementById('botTokenTiktok').value=defaultToken;localStorage.setItem('telegramBotToken',defaultToken);
-            BOT_TOKEN=defaultToken;showNotification('Token direset ke default!','success');document.getElementById('tokenStatusTiktok').className='token-status'
-        }
-        function resetTokenPinterest(){
-            const defaultToken='Your_token_bot';document.getElementById('botTokenPinterest').value=defaultToken;localStorage.setItem('telegramBotToken',defaultToken);
-            BOT_TOKEN=defaultToken;showNotification('Token direset ke default!','success');document.getElementById('tokenStatusPinterest').className='token-status'
-        }
-        function resetTokenInstagram(){
-            const defaultToken='Your_token_bot';document.getElementById('botTokenInstagram').value=defaultToken;localStorage.setItem('telegramBotToken',defaultToken);
-            BOT_TOKEN=defaultToken;showNotification('Token direset ke default!','success');document.getElementById('tokenStatusInstagram').className='token-status'
-        }
-        function changeCount(amount){
-            currentCount=parseInt(document.getElementById('count').value);currentCount+=amount;
-            if(currentCount<1)currentCount=1;if(currentCount>50)currentCount=50;document.getElementById('count').value=currentCount
-        }
-        function changePinterestCount(amount){
-            currentPinterestCount=parseInt(document.getElementById('pinterestCount').value);currentPinterestCount+=amount;
-            if(currentPinterestCount<1)currentPinterestCount=1;if(currentPinterestCount>20)currentPinterestCount=20;
-            document.getElementById('pinterestCount').value=currentPinterestCount
-        }
-        async function startSpam(){
-            if(!isAuthenticated){showResult('error','Anda harus login terlebih dahulu!');return}
-            const targetId=document.getElementById('targetId').value.trim();const message=document.getElementById('message').value.trim();
-            const count=parseInt(document.getElementById('count').value);const currentToken=document.getElementById('botToken').value.trim();
-            if(!currentToken){showResult('error','Token bot harus diisi!');return}
-            if(!targetId||!message){showResult('error','Target ID dan pesan harus diisi!');return}
-            document.getElementById('loading').style.display='block';document.getElementById('spamBtn').disabled=true;
-            document.getElementById('progress').style.display='block';document.getElementById('result').style.display='none';
-            document.getElementById('successCount').textContent='0';document.getElementById('errorCount').textContent='0';
-            document.getElementById('totalCount').textContent='0';let successCount=0;let errorCount=0;
-            try{
-                for(let i=1;i<=count;i++){
-                    try{
-                        const response=await fetch(`https://api.telegram.org/bot${currentToken}/sendMessage`,{
-                            method:'POST',headers:{'Content-Type':'application/json'},
-                            body:JSON.stringify({chat_id:targetId,text:`[${i}/${count}] ${message}`,parse_mode:'HTML'})
-                        });const result=await response.json();if(result.ok){successCount++}else{errorCount++}
-                    }catch(error){errorCount++}
-                    const progress=(i/count)*100;document.getElementById('progressBar').style.width=progress+'%';
-                    document.getElementById('progressBar').textContent=Math.round(progress)+'%';
-                    document.getElementById('successCount').textContent=successCount;
-                    document.getElementById('errorCount').textContent=errorCount;document.getElementById('totalCount').textContent=i;
-                    await new Promise(resolve=>setTimeout(resolve,2000))
+
+        function parseApiResponse(data, apiUrl) {
+            if (apiUrl.includes('tikwm.com')) {
+                if (data && data.code === 0 && data.data) {
+                    return {
+                        type: data.data.images ? 'slider' : 'video',
+                        title: data.data.title,
+                        author: data.data.author?.unique_id,
+                        cover: data.data.cover,
+                        noWatermarkUrl: data.data.play,
+                        watermarkUrl: data.data.wmplay,
+                        musicUrl: data.data.music,
+                        images: data.data.images,
+                    };
                 }
-                showResult('success',`✅ SPAM TELEGRAM SELESAI!\n\n🤖 Bot Token: ${currentToken.substring(0,15)}...\n👤 Target: ${targetId}\n💬 Pesan: ${message}\n📤 Direncanakan: ${count} kali\n✅ Berhasil: ${successCount}\n❌ Gagal: ${errorCount}`)
-            }catch(error){showResult('error','Terjadi kesalahan: '+error.message)}
-            finally{document.getElementById('loading').style.display='none';document.getElementById('spamBtn').disabled=false}
-        }
-        async function downloadTiktok(){
-            if(!isAuthenticated){showResult('error','Anda harus login terlebih dahulu!');return}
-            const tiktokUrl=document.getElementById('tiktokUrl').value.trim();const targetId=document.getElementById('targetIdTiktok').value.trim();
-            const currentToken=document.getElementById('botTokenTiktok').value.trim();if(!currentToken){showResult('error','Token bot harus diisi!');return}
-            if(!targetId||!tiktokUrl){showResult('error','Target ID dan URL TikTok harus diisi!');return}
-            if(!tiktokUrl.includes('tiktok.com')){showResult('error','URL harus dari TikTok!');return}
-            document.getElementById('loadingTiktok').style.display='block';document.getElementById('tiktokBtn').disabled=true;
-            document.getElementById('result').style.display='none';document.getElementById('videoPreview').innerHTML='';
-            try{
-                const apiUrl=`https://kyyokatsurestapi.my.id/downloader/tiktok?url=${encodeURIComponent(tiktokUrl)}`;
-                const response=await fetch(apiUrl);const result=await response.json();
-                if(result.status&&result.result&&result.result.videos&&result.result.videos.length>0){
-                    const videoUrl=result.result.videos[0];document.getElementById('videoPreview').innerHTML=`
-                        <video controls><source src="${videoUrl}" type="video/mp4">Browser Anda tidak mendukung tag video.</video>
-                        <button class="download-btn" onclick="sendVideoToTelegram('${videoUrl}','${currentToken}','${targetId}')">
-                            <i class="fas fa-paper-plane"></i> KIRIM KE TELEGRAM
-                        </button>`;showResult('success','✅ Video berhasil didownload! Klik tombol di atas untuk mengirim ke Telegram.')
-                }else{showResult('error','❌ Gagal mendownload video TikTok')}
-            }catch(error){showResult('error','❌ Terjadi kesalahan: '+error.message)}
-            finally{document.getElementById('loadingTiktok').style.display='none';document.getElementById('tiktokBtn').disabled=false}
-        }
-        async function searchPinterest(){
-            if(!isAuthenticated){showResult('error','Anda harus login terlebih dahulu!');return}
-            const query=document.getElementById('pinterestQuery').value.trim();const count=parseInt(document.getElementById('pinterestCount').value);
-            const currentToken=document.getElementById('botTokenPinterest').value.trim();if(!currentToken){showResult('error','Token bot harus diisi!');return}
-            if(!query){showResult('error','Kata kunci pencarian harus diisi!');return}
-            document.getElementById('loadingPinterest').style.display='block';document.getElementById('pinterestBtn').disabled=true;
-            document.getElementById('result').style.display='none';document.getElementById('pinterestPreview').innerHTML='';
-            document.getElementById('pinterestGrid').innerHTML='';pinterestResults=[];
-            try{
-                for(let i=0;i<count;i++){
-                    const apiUrl=`https://kyyokatsurestapi.my.id/search/pinterest?q=${encodeURIComponent(query+' '+i)}`;
-                    const response=await fetch(apiUrl);const result=await response.json();
-                    if(result.status&&result.result){pinterestResults.push(result.result)}await new Promise(resolve=>setTimeout(resolve,500))
+            } else if (apiUrl.includes('vapis.my.id')) {
+                if (data && data.status === 'success' && data.result) {
+                    return {
+                        type: 'video',
+                        title: data.result.title,
+                        author: data.result.author?.unique_id,
+                        cover: data.result.cover,
+                        noWatermarkUrl: data.result.video?.no_watermark,
+                        watermarkUrl: data.result.video?.watermark,
+                        musicUrl: data.result.audio,
+                    };
                 }
-                if(pinterestResults.length>0){displayPinterestResults();showResult('success',`✅ Ditemukan ${pinterestResults.length} gambar dari Pinterest!`)}
-                else{showResult('error','❌ Tidak ada gambar yang ditemukan')}
-            }catch(error){showResult('error','❌ Terjadi kesalahan: '+error.message)}
-            finally{document.getElementById('loadingPinterest').style.display='none';document.getElementById('pinterestBtn').disabled=false}
-        }
-        function displayPinterestResults(){
-            const grid=document.getElementById('pinterestGrid');grid.innerHTML='';
-            pinterestResults.forEach((result,index)=>{const item=document.createElement('div');item.className='pinterest-item';
-            item.innerHTML=`<img src="${result.image}" alt="${result.fullname}"><div class="pinterest-info">
-                <h4>${result.fullname||'Unknown'}</h4><p>${result.caption||'No caption'}</p><div class="pinterest-actions">
-                <button class="pinterest-btn pinterest-send" onclick="sendPinterestToTelegram(${index})">
-                    <i class="fas fa-paper-plane"></i> Kirim</button>
-                <button class="pinterest-btn pinterest-download" onclick="downloadPinterestImage(${index})">
-                    <i class="fas fa-download"></i> Download</button></div></div>`;grid.appendChild(item)})
-        }
-        async function sendPinterestToTelegram(index){
-            const result=pinterestResults[index];const targetId=document.getElementById('targetIdPinterest').value.trim();
-            const currentToken=document.getElementById('botTokenPinterest').value.trim();if(!targetId){showResult('error','Target ID harus diisi!');return}
-            document.getElementById('loadingPinterest').style.display='block';
-            try{
-                const response=await fetch(`https://api.telegram.org/bot${currentToken}/sendPhoto`,{
-                    method:'POST',headers:{'Content-Type':'application/json'},
-                    body:JSON.stringify({chat_id:targetId,photo:result.image,
-                    caption:`📌 ${result.fullname||'Pinterest Image'}\n\n${result.caption||''}\n\nSource: ${result.source||''}`})
-                });const telegramResult=await response.json();
-                if(telegramResult.ok){showNotification('✅ Gambar berhasil dikirim ke Telegram!','success')}
-                else{showResult('error','❌ Gagal mengirim gambar: '+(telegramResult.description||'Unknown error'))}
-            }catch(error){showResult('error','❌ Terjadi kesalahan: '+error.message)}
-            finally{document.getElementById('loadingPinterest').style.display='none'}
-        }
-        function downloadPinterestImage(index){
-            const result=pinterestResults[index];const link=document.createElement('a');
-            link.href=result.image;link.download=`pinterest-${result.fullname||'image'}-${Date.now()}.jpg`;
-            document.body.appendChild(link);link.click();document.body.removeChild(link);
-            showNotification('✅ Gambar berhasil dimuat!','success')
-        }
-        async function sendVideoToTelegram(videoUrl,token,targetId){
-            document.getElementById('loadingTiktok').style.display='block';
-            try{
-                const response=await fetch(`https://api.telegram.org/bot${token}/sendVideo`,{
-                    method:'POST',headers:{'Content-Type':'application/json'},
-                    body:JSON.stringify({chat_id:targetId,video:videoUrl,caption:'ada kiriman santet nih'})
-                });const result=await response.json();
-                if(result.ok){showResult('success','✅ Video berhasil dikirim ke Telegram kamu kak!')}
-                else{showResult('error','❌ Gagal mengirim video: '+(result.description||'Unknown error'))}
-            }catch(error){showResult('error','❌ Terjadi kesalahan: '+error.message)}
-            finally{document.getElementById('loadingTiktok').style.display='none'}
-        }
-        async function downloadInstagram(){
-            if(!isAuthenticated){showResult('error','Anda harus login terlebih dahulu!');return}
-            const instagramUrl=document.getElementById('instagramUrl').value.trim();const targetId=document.getElementById('targetIdInstagram').value.trim();
-            const currentToken=document.getElementById('botTokenInstagram').value.trim();if(!currentToken){showResult('error','Token bot harus diisi!');return}
-            if(!targetId||!instagramUrl){showResult('error','Target ID dan URL Instagram harus diisi!');return}
-            if(!instagramUrl.includes('instagram.com')){showResult('error','URL harus dari Instagram!');return}
-            document.getElementById('loadingInstagram').style.display='block';document.getElementById('instagramBtn').disabled=true;
-            document.getElementById('result').style.display='none';document.getElementById('instagramPreview').innerHTML='';
-            try{
-                const apiUrl=`https://api-varhad.my.id/download/ig?url=${encodeURIComponent(instagramUrl)}`;
-                const response=await fetch(apiUrl);const result=await response.json();
-                if(result.status&&result.result){
-                    instagramData=result;
-                    const data=result.result;
-                    let previewHtml=`
-                        <div style="background:rgba(0,0,0,0.7); padding:20px; border-radius:15px; border:1px solid rgba(138,43,226,0.3);">
-                            <h3 style="color:var(--neon); margin-bottom:15px;">
-                                <i class="fab fa-instagram"></i> Hasil Download Instagram
-                            </h3>
-                            <p><strong>Username:</strong> ${data.username||'N/A'}</p>
-                            <p><strong>Tipe Konten:</strong> ${data.type||'N/A'}</p>
-                            <p><strong>Caption:</strong> ${data.caption||'Tidak ada caption'}</p>
-                            <p><strong>Likes:</strong> ${data.likes||'0'} | <strong>Comments:</strong> ${data.comments||'0'}</p>
-                            <p><strong>Waktu Posting:</strong> ${data.time||'N/A'}</p>
-                    `;
-                    if(data.images&&data.images.length>0){
-                        previewHtml+=`<div style="margin-top:15px;"><strong>Gambar:</strong><div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:10px; margin-top:10px;">`;
-                        data.images.forEach((imgUrl,index)=>{
-                            previewHtml+=`
-                                <div style="border-radius:10px; overflow:hidden; border:1px solid rgba(138,43,226,0.3);">
-                                    <img src="${imgUrl}" alt="Instagram Image ${index+1}" style="width:100%; height:120px; object-fit:cover;">
-                                </div>
-                            `;
-                        });previewHtml+=`</div></div>`;
-                    }
-                    if(data.video_url){
-                        previewHtml+=`
-                            <div style="margin-top:15px;">
-                                <strong>Video:</strong><br>
-                                <video controls style="width:100%; max-width:400px; border-radius:10px; margin-top:10px;">
-                                    <source src="${data.video_url}" type="video/mp4">
-                                    Browser tidak mendukung tag video.
-                                </video>
-                            </div>
-                        `;
-                    }
-                    previewHtml+=`
-                            <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
-                                <button class="btn-token" onclick="sendInstagramToTelegram()" 
-                                        style="background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
-                                    <i class="fas fa-paper-plane"></i> Kirim ke Telegram
-                                </button>
-                                ${data.images&&data.images.length>0? 
-                                    `<button class="btn-token" onclick="downloadInstagramImages()" 
-                                             style="background:linear-gradient(135deg, var(--success) 0%, #00cc66 100%);">
-                                        <i class="fas fa-download"></i> Download Gambar
-                                    </button>`:''
-                                }
-                                ${data.video_url? 
-                                    `<button class="btn-token" onclick="downloadInstagramVideo()" 
-                                             style="background:linear-gradient(135deg, var(--info) 0%, #138496 100%);">
-                                        <i class="fas fa-download"></i> Download Video
-                                    </button>`:''
-                                }
-                            </div>
-                        </div>
-                    `;
-                    document.getElementById('instagramPreview').innerHTML=previewHtml;
-                    showResult('success','✅Video/photo dari instagram berhasil di muat.');
-                }else{
-                    showResult('error','❌ Gagal mendownload konten Instagram. Pastikan URL valid dan konten publik.');
+            } else if (apiUrl.includes('vreden.web.id')) {
+                 if (data && data.status && data.result) {
+                    return {
+                        type: 'video',
+                        title: data.result.title,
+                        author: data.result.author?.fullname,
+                        cover: data.result.cover,
+                        noWatermarkUrl: data.result.data.find(item => item.type === 'nowatermark')?.url,
+                        watermarkUrl: data.result.data.find(item => item.type === 'watermark')?.url,
+                        musicUrl: data.result.music_info?.url,
+                    };
                 }
-            }catch(error){showResult('error','❌ Terjadi kesalahan: '+error.message)}
-            finally{document.getElementById('loadingInstagram').style.display='none';document.getElementById('instagramBtn').disabled=false}
+            }
+            return null;
         }
-        async function sendInstagramToTelegram(){
-            const targetId=document.getElementById('targetIdInstagram').value.trim();
-            const currentToken=document.getElementById('botTokenInstagram').value.trim();
-            if(!instagramData||!instagramData.result){showResult('error','Data Instagram tidak ditemukan!');return}
-            document.getElementById('loadingInstagram').style.display='block';
-            try{
-                const data=instagramData.result;
-                if(data.video_url){
-                    const response=await fetch(`https://api.telegram.org/bot${currentToken}/sendVideo`,{
-                        method:'POST',headers:{'Content-Type':'application/json'},
-                        body:JSON.stringify({
-                            chat_id:targetId,
-                            video:data.video_url,
-                            caption:`📷 Instagram Video\n👤 ${data.username}\n\n${data.caption||''}\n\n💖 ${data.likes} likes | 💬 ${data.comments} comments`
-                        })
-                    });await response.json();
-                }else if(data.images&&data.images.length>0){
-                    if(data.images.length===1){
-                        const response=await fetch(`https://api.telegram.org/bot${currentToken}/sendPhoto`,{
-                            method:'POST',headers:{'Content-Type':'application/json'},
-                            body:JSON.stringify({
-                                chat_id:targetId,
-                                photo:data.images[0],
-                                caption:`📷 Instagram Photo\n👤 ${data.username}\n\n${data.caption||''}\n\n💖 ${data.likes} likes | 💬 ${data.comments} comments`
-                            })
-                        });await response.json();
-                    }else{
-                        const media=data.images.map((imgUrl,index)=>({type:'photo',media:imgUrl}));
-                        const response=await fetch(`https://api.telegram.org/bot${currentToken}/sendMediaGroup`,{
-                            method:'POST',headers:{'Content-Type':'application/json'},
-                            body:JSON.stringify({chat_id:targetId,media:media})
-                        });await response.json();
-                    }
-                }
-                showNotification('✅ Sukses woi!','success');
-            }catch(error){showResult('error','❌ Gagal mengirim ke Telegram: '+error.message)}
-            finally{document.getElementById('loadingInstagram').style.display='none'}
+
+        function displayResults(data) {
+            resultsContainer.classList.remove('hidden');
+            if (data.type === 'slider' && data.images && data.images.length > 0) {
+                displayImageSlider(data);
+            } else if (data.type === 'video') {
+                displayVideo(data);
+            } else {
+                showModal('Format konten tidak didukung atau tidak ditemukan.');
+            }
         }
-        function downloadInstagramImages(){
-            if(!instagramData||!instagramData.result.images)return;
-            instagramData.result.images.forEach((imgUrl,index)=>{
-                const link=document.createElement('a');
-                link.href=imgUrl;
-                link.download=`instagram-${instagramData.result.username||'image'}-${index+1}-${Date.now()}.jpg`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+
+        function displayVideo(data) {
+            videoResult.classList.remove('hidden');
+            const playableUrl = data.noWatermarkUrl || data.watermarkUrl;
+            if (playableUrl) {
+                videoPlayer.src = playableUrl;
+                videoPlayer.poster = data.cover || '';
+            } else {
+                showModal('Tidak ada tautan video yang bisa diputar.');
+                return;
+            }
+
+            videoTitle.textContent = data.title || 'Judul Tidak Tersedia';
+            videoAuthor.textContent = data.author ? `@${data.author}` : 'Penulis Tidak Tersedia';
+
+            setupDownloadButton(downloadNoWatermarkBtn, data.noWatermarkUrl, 'nugget_downloader_video.mp4');
+            setupDownloadButton(downloadWatermarkBtn, data.watermarkUrl, 'nugget_downloader_video_wm.mp4');
+            setupDownloadButton(downloadMusicBtn, data.musicUrl, 'nugget_downloader_music.mp3');
+            setupDownloadButton(downloadCoverBtn, data.cover, 'nugget_downloader_cover.jpg');
+        }
+
+        function displayImageSlider(data) {
+            imageSliderResult.classList.remove('hidden');
+            imagesData = data.images;
+            currentImageIndex = 0;
+
+            imageTitle.textContent = data.title || 'Judul Tidak Tersedia';
+            imageAuthor.textContent = data.author ? `@${data.author}` : 'Penulis Tidak Tersedia';
+            
+            renderSlider();
+
+            setupDownloadButton(downloadSliderMusicBtn, data.musicUrl, 'nugget_downloader_music.mp3');
+            
+            downloadCurrentImageBtn.onclick = () => {
+                const url = imagesData[currentImageIndex];
+                startDownload(url, `nugget_downloader_image_${currentImageIndex + 1}.jpeg`, downloadCurrentImageBtn);
+            };
+
+            downloadAllImagesBtn.onclick = () => {
+                imagesData.forEach((url, index) => {
+                    setTimeout(() => {
+                         startDownload(url, `nugget_downloader_image_${index + 1}.jpeg`, downloadAllImagesBtn, true);
+                    }, index * 300);
+                });
+            };
+        }
+        
+        function renderSlider() {
+            imageSliderContainer.innerHTML = '';
+            imagesData.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Slide ${index + 1}`;
+                img.className = 'slider-image rounded-lg transition-opacity duration-500 absolute top-0 left-0';
+                img.style.opacity = index === currentImageIndex ? '1' : '0';
+                imageSliderContainer.appendChild(img);
             });
-            showNotification(`✅ ${instagramData.result.images.length} gambar berhasil didownload kak!`,'success');
+            imageSliderContainer.style.paddingTop = '177.77%'; 
+            imageCounter.textContent = `${currentImageIndex + 1} / ${imagesData.length}`;
+            prevImageBtn.disabled = currentImageIndex === 0;
+            nextImageBtn.disabled = currentImageIndex === imagesData.length - 1;
         }
-        function downloadInstagramVideo(){
-            if(!instagramData||!instagramData.result.video_url)return;
-            const link=document.createElement('a');
-            link.href=instagramData.result.video_url;
-            link.download=`instagram-${instagramData.result.username||'video'}-${Date.now()}.mp4`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            showNotification('✅ Videonya berhasil didownload kak!','success');
-        }
-        function showResult(type,message){
-            const resultDiv=document.getElementById('result');resultDiv.className='result '+type;
-            resultDiv.textContent=message;resultDiv.style.display='block'
-        }
-        document.getElementById('message').addEventListener('keypress',function(e){if(e.key==='Enter'&&e.ctrlKey){startSpam()}});
-        document.addEventListener('DOMContentLoaded',function(){
-            loadSavedToken();document.getElementById('targetId').focus();
-            document.getElementById('sidebarOverlay').addEventListener('click',toggleSidebar)
+
+        prevImageBtn.addEventListener('click', () => {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                renderSlider();
+            }
         });
+
+        nextImageBtn.addEventListener('click', () => {
+            if (currentImageIndex < imagesData.length - 1) {
+                currentImageIndex++;
+                renderSlider();
+            }
+        });
+
+        function setupDownloadButton(button, url, filename) {
+            if (url) {
+                button.classList.remove('hidden');
+                button.onclick = () => startDownload(url, filename, button);
+            } else {
+                button.classList.add('hidden');
+            }
+        }
+
+        async function startDownload(url, filename, button, isBatch = false) {
+            if (!url) {
+                showModal('Tautan unduhan tidak tersedia.');
+                return;
+            }
+            
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            if (!isBatch) {
+                 button.innerHTML = '<span class="loader-small"></span> Memproses...';
+            }
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+            } catch (error) {
+                console.error('Download error:', error);
+                showModal('Gagal mengunduh file. Coba klik kanan pada tombol dan "Simpan tautan sebagai...".');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+
+        function setLoadingState(isLoading) {
+            loadingSpinner.classList.toggle('hidden', !isLoading);
+            submitBtn.disabled = isLoading;
+            const btnContent = isLoading ? '<span class="loader-small"></span><span>Mencari...</span>' : '<i class="fas fa-download"></i><span>Unduh</span>';
+            submitBtn.innerHTML = btnContent;
+        }
+
+        function showMessage(message, colorClass = 'text-gray-400') {
+            statusMessage.textContent = message;
+            statusMessage.className = `text-center mt-6 text-sm ${colorClass}`;
+            statusMessage.classList.remove('hidden');
+        }
+
+        function hideMessage() {
+            statusMessage.classList.add('hidden');
+        }
+
+        function hideAllResults() {
+            resultsContainer.classList.add('hidden');
+            videoResult.classList.add('hidden');
+            imageSliderResult.classList.add('hidden');
+            videoPlayer.src = '';
+            videoPlayer.poster = '';
+            imageSliderContainer.innerHTML = '';
+        }
+
+        function showModal(message) {
+            modalMessage.textContent = message;
+            errorModal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            errorModal.classList.add('hidden');
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+
     </script>
 </body>
 </html>
